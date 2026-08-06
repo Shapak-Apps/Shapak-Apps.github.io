@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="tk" data-lang="tk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>şapak — Open Source Turkmenistan</title>
+<meta name="description" content="Open-source mobile apps built in Turkmenistan. React Native, Expo, TypeScript. MIT licensed.">
+<link rel="icon" href="icon.png">
+
+<meta property="og:title" content="şapak — Open Source Turkmenistan">
+<meta property="og:description" content="Open-source mobile apps built in Turkmenistan.">
+<meta property="og:type" content="website">
+
+<style>
+:root{
+  --bg:#FBFAF8; --fg:#17150F; --muted:#6E675B; --rule:#E3DFD6;
+  --brand:#FF851B;
+  --accent:#B25A0C;
+  --accent-soft:#FF851B1F;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#131210; --fg:#EDEAE3; --muted:#948C7E; --rule:#282621;
+         --accent:#FF9D4D; --accent-soft:#FF851B26; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--sans); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+.wrap{max-width:1120px; margin:0 auto; padding:0 48px 96px}
+
+[data-lang="tk"] [lang="en"]{display:none}
+[data-lang="en"] [lang="tk"]{display:none}
+
+/* ---------- шапка ---------- */
+.masthead{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; padding:36px 0 0;
+}
+.brand{display:block; text-decoration:none; line-height:0}
+.brand img{height:46px; width:auto; display:block; border-radius:3px}
+
+.langsel{display:flex; gap:2px; font-family:var(--mono); font-size:11px}
+.langsel button{
+  appearance:none; border:0; background:none; cursor:pointer; color:var(--muted);
+  font:inherit; letter-spacing:.09em; padding:5px 7px; border-radius:3px;
+}
+.langsel button:hover{color:var(--fg)}
+.langsel button[aria-pressed="true"]{color:var(--fg); background:var(--accent-soft)}
+
+/* ---------- заявление ---------- */
+.hero{padding:76px 0 84px}
+.hero h1{
+  margin:0; font-size:clamp(34px,4.4vw,56px); font-weight:500;
+  line-height:1.06; letter-spacing:-.03em; max-width:24ch;
+}
+.hero p{margin:26px 0 0; color:var(--muted); font-size:18px; max-width:56ch}
+
+/* ---------- разделы ---------- */
+section{padding:0 0 72px}
+.label{
+  font-family:var(--mono); font-size:11px; text-transform:uppercase;
+  letter-spacing:.15em; color:var(--muted);
+  margin:0 0 26px; padding-bottom:14px; border-bottom:1px solid var(--rule);
+}
+
+/* ---------- приложения: три колонки во всю ширину ---------- */
+.apps{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0 40px}
+.app{
+  border-top:2px solid var(--fg); padding:16px 0 0;
+  display:flex; flex-direction:column;
+}
+.app.soon{border-top-color:var(--rule)}
+.app h2{margin:0; font-size:19px; font-weight:600; letter-spacing:-.015em}
+.status{
+  display:block; margin:6px 0 0;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--muted);
+}
+.status.live{color:var(--accent)}
+.app p{margin:14px 0 0; color:var(--muted); font-size:15.5px; flex:1}
+.links{margin:20px 0 0; display:flex; gap:18px; flex-wrap:wrap; font-size:14.5px}
+.links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
+.links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
+
+/* ---------- участие ---------- */
+.cols{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 40px; align-items:start;
+}
+.cols p{margin:0; color:var(--fg); font-size:16.5px}
+.cta{
+  display:inline-block; margin-top:26px; font-size:16px; text-decoration:none;
+  border-bottom:1px solid var(--accent); color:var(--accent); padding-bottom:2px;
+}
+
+/* ---------- подвал ---------- */
+footer{border-top:1px solid var(--rule); padding:24px 0 0}
+.meta{
+  font-family:var(--mono); font-size:12.5px; color:var(--muted);
+  display:flex; gap:10px 32px; flex-wrap:wrap;
+}
+.meta a{text-decoration:none; border-bottom:1px solid var(--rule)}
+.meta a:hover{color:var(--fg)}
+
+@media (max-width:860px){
+  .apps{grid-template-columns:1fr; gap:0}
+  .app{padding:16px 0 32px}
+  .app:last-child{padding-bottom:0}
+  .cols{grid-template-columns:1fr; gap:15px}
+}
+@media (max-width:640px){
+  .wrap{padding:0 22px 72px}
+  .hero{padding:52px 0 56px}
+  section{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <a class="brand" href="/">
+      <img src="logo.png" alt="şapak" width="788" height="204">
+    </a>
+    <div class="langsel">
+      <button data-lang-btn="tk" aria-pressed="true">TK</button>
+      <button data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>
+      <span lang="tk">Türkmenistanda döredilýän açyk kodly mobil programmalar</span>
+      <span lang="en">Open-source mobile apps built in Turkmenistan</span>
+    </h1>
+    <p>
+      <span lang="tk">Ähli kod açyk we mugt — MIT ygtyýarnamasy. React Native · Expo · TypeScript.</span>
+      <span lang="en">Everything we build is open and free — MIT licensed. React Native · Expo · TypeScript.</span>
+    </p>
+  </div>
+
+  <section>
+    <p class="label"><span lang="tk">Programmalar</span><span lang="en">Apps</span></p>
+    <div class="apps">
+
+      <article class="app">
+        <h2>Ykjam Terjime</h2>
+        <span class="status live"><span lang="tk">Dükanlarda</span><span lang="en">Shipping</span></span>
+        <p>
+          <span lang="tk">Türkmen gepleşik kitaby we terjimeçi. Internetsiz işleýär.</span>
+          <span lang="en">Turkmen phrasebook and translator. Works offline.</span>
+        </p>
+        <div class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.shapak.translator">Google Play</a>
+          <a href="https://apps.apple.com/app/ykjam-terjime/id6758071845">App Store</a>
+          <a href="https://github.com/Shapak-Apps/turkmen-phrasebook">GitHub</a>
+        </div>
+      </article>
+
+      <article class="app soon">
+        <h2>Iňlis dili 1</h2>
+        <span class="status"><span lang="tk">Taýýarlanýar</span><span lang="en">In development</span></span>
+        <p>
+          <span lang="tk">Iňlis dilini türkmen dilinde öwrenmek üçin — A1 derejesi.</span>
+          <span lang="en">Learn English from Turkmen — level A1.</span>
+        </p>
+        <div class="links">
+          <a href="https://github.com/Shapak-Apps/turkmen-english">GitHub</a>
+        </div>
+      </article>
+
+      <article class="app soon">
+        <h2>Hytaý dili 1</h2>
+        <span class="status"><span lang="tk">Taýýarlanýar</span><span lang="en">In development</span></span>
+        <p>
+          <span lang="tk">Hytaý dilini türkmen dilinde öwrenmek üçin.</span>
+          <span lang="en">Learn Chinese from Turkmen.</span>
+        </p>
+        <div class="links">
+          <a href="https://github.com/Shapak-Apps/turkmen-chinese">GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="label"><span lang="tk">Goşant goşmak</span><span lang="en">Contributing</span></p>
+    <div class="cols">
+      <p lang="tk">Programmalarymyz hakyky ulanyjylar üçin ýazylýar — okuw taslamalary däl. Ýazan kodyň dükandaky programma düşýär.</p>
+      <p lang="tk">Meseleler kiçi böleklere bölünýär, şonuň üçin ilkinji Pull Request üçin amatly. Kod barlagy türkmen we rus dillerinde geçirilýär — iňlis diliň gowşak bolsa-da päsgel däl.</p>
+      <p lang="en">We build apps for real users, not tutorials. Your code ends up in something people install.</p>
+      <p lang="en">Issues are scoped small, which makes them a good place for a first pull request. Code review happens in Turkmen and Russian — weak English is not a blocker.</p>
+    </div>
+    <a class="cta" lang="tk" href="https://github.com/Shapak-Apps">GitHub-da başla →</a>
+    <a class="cta" lang="en" href="https://github.com/Shapak-Apps">Start on GitHub →</a>
+  </section>
+
+  <footer>
+    <div class="meta">
+      <a href="https://github.com/Shapak-Apps">github.com/Shapak-Apps</a>
+      <a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a>
+      <span>Türkmenistan</span>
+      <span>MIT</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btns = document.querySelectorAll('[data-lang-btn]');
+
+  function set(lang) {
+    root.dataset.lang = lang;
+    root.setAttribute('lang', lang);
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.langBtn === lang));
+    });
+    try { localStorage.setItem('shapak-lang', lang); } catch (e) {}
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('shapak-lang'); } catch (e) {}
+  if (!saved) saved = /^en|^ru/i.test(navigator.language || '') ? 'en' : 'tk';
+  set(saved === 'en' ? 'en' : 'tk');
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { set(b.dataset.langBtn); });
+  });
+})();
+</script>
+</body>
+</html>
