@@ -160,16 +160,6 @@ section{padding:72px 0 0}
 .links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
 .links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
 
-/* ---------- очередь языков ---------- */
-.queue{display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:20px; margin:32px 0 0}
-.queue figure{margin:0; text-align:center}
-.queue img{width:72px; height:72px; border-radius:16px; display:block; margin:0 auto}
-.queue figcaption{margin-top:10px; font-size:13.5px; line-height:1.3}
-.queue small{
-  display:block; margin-top:4px; font-family:var(--mono); font-size:10.5px;
-  color:var(--muted); letter-spacing:.09em; text-transform:uppercase;
-}
-
 /* ---------- сообщество ---------- */
 .people{display:flex; flex-wrap:wrap; gap:14px 30px; margin:28px 0 0}
 .person{display:flex; align-items:center; gap:10px; text-decoration:none; font-family:var(--mono); font-size:13px}
@@ -207,7 +197,6 @@ footer{margin:88px 0 0; border-top:1px solid var(--rule); padding:24px 0 0}
 
 @media (max-width:960px){
   .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .queue{grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 16px}
 }
 @media (max-width:860px){
   .prose{grid-template-columns:1fr}
@@ -224,7 +213,6 @@ footer{margin:88px 0 0; border-top:1px solid var(--rule); padding:24px 0 0}
   .hero .lead{font-size:17px}
   section{padding-top:56px}
   .principles{grid-template-columns:1fr}
-  .queue{grid-template-columns:repeat(3,minmax(0,1fr))}
   .stat b{font-size:28px}
 }
 </style>
@@ -431,24 +419,6 @@ footer{margin:88px 0 0; border-top:1px solid var(--rule); padding:24px 0 0}
     </div>
   </section>
 
-  <section id="next">
-    <p class="label"><span lang="tk">Indiki diller</span><span lang="en">Next languages</span></p>
-    <div class="prose two">
-      <p lang="tk">Hytaý we iňlis dilinden soň nobat şeýle. Hereketlendiriji umumy — her indiki dil diňe täze mazmun we täze nyşan, şonuň üçin öňküden çalt çykýar.</p>
-      <p lang="tk">Repozitoriýalar öňki iki programma dükana çykandan soň açylýar: bir wagtda bir dil.</p>
-      <p lang="en">After Chinese and English, the queue is this. The engine is shared — each next language is only new content and a new icon, so it ships faster than the one before.</p>
-      <p lang="en">Repositories open after the first two apps are in the stores: one language at a time.</p>
-    </div>
-    <div class="queue">
-      <figure><img src="assets/rus-dili-1.png" alt="" width="160" height="160"><figcaption>Rus dili 1<small><span lang="tk">rus dili</span><span lang="en">Russian</span></small></figcaption></figure>
-      <figure><img src="assets/nemes-dili-1.png" alt="" width="160" height="160"><figcaption>Nemes dili 1<small><span lang="tk">nemes dili</span><span lang="en">German</span></small></figcaption></figure>
-      <figure><img src="assets/fransuz-dili-1.png" alt="" width="160" height="160"><figcaption>Fransuz dili 1<small><span lang="tk">fransuz dili</span><span lang="en">French</span></small></figcaption></figure>
-      <figure><img src="assets/yapon-dili-1.png" alt="" width="160" height="160"><figcaption>Ýapon dili 1<small><span lang="tk">ýapon dili</span><span lang="en">Japanese</span></small></figcaption></figure>
-      <figure><img src="assets/korey-dili-1.png" alt="" width="160" height="160"><figcaption>Koreý dili 1<small><span lang="tk">koreý dili</span><span lang="en">Korean</span></small></figcaption></figure>
-      <figure><img src="assets/arap-dili-1.png" alt="" width="160" height="160"><figcaption>Arap dili 1<small><span lang="tk">arap dili</span><span lang="en">Arabic</span></small></figcaption></figure>
-      <figure><img src="assets/pars-dili-1.png" alt="" width="160" height="160"><figcaption>Pars dili 1<small><span lang="tk">pars dili</span><span lang="en">Persian</span></small></figcaption></figure>
-    </div>
-  </section>
 
   <section id="community">
     <p class="label"><span lang="tk">Jemgyýet</span><span lang="en">Community</span></p>
