@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="tk" data-lang="tk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taslamalar — Şapak Apps</title>
+<meta name="description" content="Open-source projects by Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, BluePlayer. Apps in Turkmen, code on GitHub, MIT and Apache-2.0.">
+<link rel="canonical" href="https://shapak-apps.github.io/projects/">
+<link rel="icon" href="/icon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FBFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Şapak Apps">
+<meta property="og:title" content="Projects — Open Source Turkmenistan">
+<meta property="og:description" content="Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, BluePlayer. Apps in Turkmen, code on GitHub.">
+<meta property="og:url" content="https://shapak-apps.github.io/projects/">
+<meta property="og:image" content="https://shapak-apps.github.io/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="tk_TM">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Projects — Open Source Turkmenistan">
+<meta name="twitter:image" content="https://shapak-apps.github.io/assets/og.png">
+
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* ---------- заголовок страницы ---------- */
+.page-hero{padding:72px 0 24px}
+.page-hero h1{
+  margin:0; font-size:clamp(34px,4.6vw,58px); font-weight:500;
+  line-height:1.05; letter-spacing:-.03em;
+}
+.page-hero .lead{margin:22px 0 0; color:var(--muted); font-size:19px; max-width:58ch}
+
+/* ---------- группы ---------- */
+.group{padding:56px 0 0}
+.group h2{
+  font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; margin:0 0 24px;
+  padding-bottom:14px; border-bottom:1px solid var(--rule);
+}
+.projects{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px}
+
+/* ---------- карточка проекта ---------- */
+.project{
+  border:1px solid var(--rule); border-radius:14px; padding:28px;
+  display:flex; flex-direction:column; gap:18px;
+  transition:border-color .3s ease, transform .3s ease;
+}
+.project:hover{border-color:var(--fg); transform:translateY(-2px)}
+.project .head{display:flex; gap:18px; align-items:center}
+.project .icon{
+  width:72px; height:72px; border-radius:18px; flex:none; display:block;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1);
+}
+.project:hover .icon{transform:scale(1.06) rotate(-2deg)}
+.project h3{margin:0; font-size:22px; font-weight:600; letter-spacing:-.02em}
+.status{
+  display:inline-flex; align-items:center; gap:8px; margin-top:6px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--muted);
+}
+.status.live{color:var(--accent)}
+.status.live::before{
+  content:""; width:7px; height:7px; border-radius:50%; background:var(--brand);
+  animation:pulse 2.4s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,133,27,.45)}
+  70%{box-shadow:0 0 0 9px rgba(255,133,27,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,133,27,0)}
+}
+.project p{margin:0; color:var(--muted); font-size:15.5px; flex:1}
+.nums{display:flex; flex-wrap:wrap; gap:8px}
+.nums span{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em;
+  padding:5px 9px; border-radius:6px; background:var(--accent-soft);
+}
+.facts{font-family:var(--mono); font-size:11.5px; color:var(--muted); letter-spacing:.02em; line-height:1.9}
+.facts a{text-decoration:none; border-bottom:1px solid var(--rule)}
+.facts a:hover{color:var(--fg)}
+.links{
+  display:flex; gap:18px; flex-wrap:wrap; font-size:14.5px;
+  padding-top:16px; border-top:1px solid var(--rule);
+}
+.links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
+.links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
+
+/* ---------- появление при прокрутке ---------- */
+html.js .reveal{
+  opacity:0; transform:translateY(16px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+  transition-delay:var(--d,0s);
+}
+html.js .reveal.in{opacity:1; transform:none}
+
+/* ---------- завершение ---------- */
+.after{padding:64px 0 0}
+.after p{margin:0; font-size:16.5px; max-width:60ch}
+
+@media (prefers-reduced-motion:reduce){
+  html.js .reveal{opacity:1; transform:none; transition:none}
+  .status.live::before{animation:none}
+  .project,.project .icon{transition:none}
+  .project:hover,.project:hover .icon{transform:none}
+}
+@media (max-width:860px){ .projects{grid-template-columns:1fr} }
+@media (max-width:640px){
+  .page-hero{padding:48px 0 16px}
+  .page-hero .lead{font-size:17px}
+  .group{padding-top:44px}
+  .project{padding:22px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <a class="brand" href="/">
+      <img src="/logo.png" alt="şapak" width="788" height="204">
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="/#mission"><span lang="tk">Maksadymyz</span><span lang="en">Mission</span><span lang="ru">Цели</span></a>
+      <a href="/projects/" aria-current="page"><span lang="tk">Taslamalar</span><span lang="en">Projects</span><span lang="ru">Проекты</span></a>
+      <a href="/#people"><span lang="tk">Adamlar</span><span lang="en">People</span><span lang="ru">Люди</span></a>
+      <a href="/#contribute"><span lang="tk">Goşant goşmak</span><span lang="en">Contributing</span><span lang="ru">Участие</span></a>
+    </nav>
+    <div class="langsel">
+      <button data-lang-btn="tk" aria-pressed="true">TK</button>
+      <button data-lang-btn="ru" aria-pressed="false">RU</button>
+      <button data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <main>
+
+  <div class="page-hero">
+    <p class="eyebrow">Open Source Turkmenistan</p>
+    <h1><span lang="tk">Taslamalar</span><span lang="en">Projects</span><span lang="ru">Проекты</span></h1>
+    <p class="lead">
+      <span lang="tk">Bäş açyk taslama, iki ugur. Ikisi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory, ygtyýarnamasy we açyk meseleleri bar.</span>
+      <span lang="en">Five open projects in two lines. Two are in the stores, all are on GitHub. Each has its own author, license and open issues.</span>
+      <span lang="ru">Пять открытых проектов в двух направлениях. Два — в магазинах, все — на GitHub. У каждого свой автор, лицензия и открытые задачи.</span>
+    </p>
+  </div>
+
+  <section class="group">
+    <h2><span lang="tk">Dil öwrenmek</span><span lang="en">Language learning</span><span lang="ru">Изучение языков</span></h2>
+    <div class="projects">
+
+      <article class="project reveal">
+        <div class="head">
+          <img class="icon" src="/assets/ykjam-terjime.png" alt="" width="160" height="160">
+          <div>
+            <h3>Ykjam Terjime</h3>
+            <span class="status live"><span lang="tk">Dükanlarda</span><span lang="en">In the stores</span><span lang="ru">В магазинах</span></span>
+          </div>
+        </div>
+        <p>
+          <span lang="tk">Türkmen gepleşik kitaby we terjimeçi. Hakyky ýagdaýlar üçin taýýar sözlemler, türkmen harplary klawiaturasyz. Web wersiýasy brauzerde açylýar.</span>
+          <span lang="en">Turkmen phrasebook and translator. Ready phrases for real situations, Turkmen letters without a special keyboard. The web version opens in the browser.</span>
+          <span lang="ru">Туркменский разговорник и переводчик. Готовые фразы для реальных ситуаций, туркменские буквы без специальной клавиатуры. Веб-версия открывается в браузере.</span>
+        </p>
+        <div class="nums">
+          <span><span lang="tk">31 dil</span><span lang="en">31 languages</span><span lang="ru">31 язык</span></span>
+          <span><span lang="tk">internetsiz</span><span lang="en">offline</span><span lang="ru">офлайн</span></span>
+          <span>MIT</span>
+        </div>
+        <div class="facts">React Native · Expo · TypeScript<br><a href="https://github.com/TheSeydiCharyyev">@TheSeydiCharyyev</a></div>
+        <div class="links">
+          <a href="https://apps.apple.com/app/ykjam-terjime/id6758071845">App Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.shapak.translator">Google Play</a>
+          <a href="https://shapak-apps.github.io/ykjam-terjime/">Web</a>
+          <a href="https://github.com/Shapak-Apps/turkmen-phrasebook">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project reveal" style="--d:.08s">
+        <div class="head">
+          <img class="icon" src="/assets/hytay-dili-1.png" alt="" width="160" height="160">
+          <div>
+            <h3>Hytaý dili 1</h3>
+            <span class="status live"><span lang="tk">App Store-da · Google Play ýakynda</span><span lang="en">On the App Store · Google Play soon</span><span lang="ru">В App Store · скоро в Google Play</span></span>
+          </div>
+        </div>
+        <p>
+          <span lang="tk">Türkmen dilinden hytaý dili. Her bapda teoriýa, gönükmeler we synag; indiki bap synagdan soň açylýar. Doly oflaýn.</span>
+          <span lang="en">Chinese from Turkmen. Every chapter has theory, exercises and an exam; the next chapter opens after the exam. Fully offline.</span>
+          <span lang="ru">Китайский с туркменского. В каждой главе теория, упражнения и экзамен; следующая глава открывается после экзамена. Полностью офлайн.</span>
+        </p>
+        <div class="nums">
+          <span><span lang="tk">31 bap</span><span lang="en">31 chapters</span><span lang="ru">31 глава</span></span>
+          <span><span lang="tk">600 gönükme</span><span lang="en">600 exercises</span><span lang="ru">600 упражнений</span></span>
+          <span>MIT</span>
+        </div>
+        <div class="facts">React Native · Expo · TypeScript<br><a href="https://github.com/TheSeydiCharyyev">@TheSeydiCharyyev</a></div>
+        <div class="links">
+          <a href="https://apps.apple.com/app/id6801010061">App Store</a>
+          <a href="https://github.com/Shapak-Apps/turkmen-chinese">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project reveal" style="--d:.16s">
+        <div class="head">
+          <img class="icon" src="/assets/inlis-dili-1.png" alt="" width="160" height="160">
+          <div>
+            <h3>Iňlis dili 1</h3>
+            <span class="status"><span lang="tk">Taýýarlanýar</span><span lang="en">In development</span><span lang="ru">В разработке</span></span>
+          </div>
+        </div>
+        <p>
+          <span lang="tk">Türkmen dilinden iňlis dili, A1 derejesi. Hytaý dili 1 bilen bir hereketlendirijide: şol bir baplar, synaglar we ösüş.</span>
+          <span lang="en">English from Turkmen, level A1. Same engine as Hytaý dili 1: the same chapters, exams and progress.</span>
+          <span lang="ru">Английский с туркменского, уровень A1. Тот же движок, что у Hytaý dili 1: те же главы, экзамены и прогресс.</span>
+        </p>
+        <div class="nums">
+          <span>A1</span>
+          <span><span lang="tk">20 bap</span><span lang="en">20 chapters</span><span lang="ru">20 глав</span></span>
+          <span>MIT</span>
+        </div>
+        <div class="facts">React Native · Expo · TypeScript<br><a href="https://github.com/TheSeydiCharyyev">@TheSeydiCharyyev</a></div>
+        <div class="links">
+          <a href="https://github.com/Shapak-Apps/turkmen-english">GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="group">
+    <h2><span lang="tk">Gurallar</span><span lang="en">Tools</span><span lang="ru">Инструменты</span></h2>
+    <div class="projects">
+
+      <article class="project reveal">
+        <div class="head">
+          <img class="icon" src="/assets/kopri.png" alt="" width="160" height="160">
+          <div>
+            <h3>Köpri</h3>
+            <span class="status"><span lang="tk">Taýýarlanýar</span><span lang="en">In development</span><span lang="ru">В разработке</span></span>
+          </div>
+        </div>
+        <p>
+          <span lang="tk">Android üçin oflaýn terjimeçi: rus we iňlis dillerinden türkmen diline oflaýn sözlük, beýleki jübütler üçin onlaýn hyzmatlar, uly köpdilli gepleşik kitaby. Kamera arkaly terjime taýýarlanýar.</span>
+          <span lang="en">Offline translator for Android: an offline dictionary from Russian and English to Turkmen, online services for other pairs, a large multilingual phrasebook. Camera translation is coming.</span>
+          <span lang="ru">Офлайн-переводчик для Android: офлайн-словарь с русского и английского на туркменский, онлайн-сервисы для остальных пар, большой многоязычный разговорник. Готовится перевод через камеру.</span>
+        </p>
+        <div class="nums">
+          <span><span lang="tk">50+ dil</span><span lang="en">50+ languages</span><span lang="ru">50+ языков</span></span>
+          <span>Apache-2.0</span>
+        </div>
+        <div class="facts">Flutter · Dart<br><a href="https://github.com/aynazar-sylyyew-dev">@aynazar-sylyyew-dev</a></div>
+        <div class="links">
+          <a href="https://github.com/Shapak-Apps/K-pri-App-for-phone">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project reveal" style="--d:.08s">
+        <div class="head">
+          <img class="icon" src="/assets/blueplayer.png" alt="" width="160" height="160">
+          <div>
+            <h3>BluePlayer</h3>
+            <span class="status"><span lang="tk">Taýýarlanýar</span><span lang="en">In development</span><span lang="ru">В разработке</span></span>
+          </div>
+        </div>
+        <p>
+          <span lang="tk">Android üçin döwrebap aýdym pleýeri. Kotlin we natiw C++.</span>
+          <span lang="en">Modern music player for Android. Kotlin and native C++.</span>
+          <span lang="ru">Современный музыкальный плеер для Android. Kotlin и нативный C++.</span>
+        </p>
+        <div class="nums">
+          <span>Kotlin</span>
+          <span>C++</span>
+          <span>Apache-2.0</span>
+        </div>
+        <div class="facts">Android<br><a href="https://github.com/aynazar-sylyyew-dev">@aynazar-sylyyew-dev</a></div>
+        <div class="links">
+          <a href="https://github.com/Shapak-Apps/BluePlayer">GitHub</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="after">
+    <p>
+      <span lang="tk">Öz açyk kodly taslamaň bar bolsa we ony türkmen jemgyýetiniň içinde ösdürmek isleseň — hat ýaz. Repozitoriý guramanyň astyna geçýär, awtorlyk seniňki bolup galýar.</span>
+      <span lang="en">If you have an open-source project and want to grow it inside the Turkmen community — write to us. The repository moves under the organization, the authorship stays yours.</span>
+      <span lang="ru">Если у вас есть проект с открытым кодом и вы хотите развивать его внутри туркменского сообщества — напишите нам. Репозиторий переходит под организацию, авторство остаётся за вами.</span>
+    </p>
+    <div class="ctas">
+      <a class="cta" href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a>
+      <a class="cta quiet" href="https://github.com/search?q=org%3AShapak-Apps+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&amp;type=issues"><span lang="tk">Täze gelenler üçin meseleler →</span><span lang="en">Issues for newcomers →</span><span lang="ru">Задачи для новичков →</span></a>
+    </div>
+  </div>
+
+  </main>
+
+  <footer>
+    <div class="meta">
+      <a href="https://github.com/Shapak-Apps">github.com/Shapak-Apps</a>
+      <a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a>
+      <a href="/ykjam-terjime/privacy-policy.html"><span lang="tk">Gizlinlik · Ykjam Terjime</span><span lang="en">Privacy · Ykjam Terjime</span><span lang="ru">Конфиденциальность · Ykjam Terjime</span></a>
+      <a href="/hytay-dili-1/privacy-policy.html"><span lang="tk">Gizlinlik · Hytaý dili 1</span><span lang="en">Privacy · Hytaý dili 1</span><span lang="ru">Конфиденциальность · Hytaý dili 1</span></a>
+      <span>Türkmenistan</span>
+    </div>
+  </footer>
+
+</div>
+<script src="/assets/site.js"></script>
+</body>
+</html>
