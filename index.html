@@ -116,7 +116,10 @@ a.stat:hover b{color:var(--accent)}
 
   <header class="masthead">
     <a class="brand" href="/">
-      <img src="/logo.png" alt="şapak" width="788" height="204">
+      <picture>
+        <source srcset="/logo-dark.png" media="(prefers-color-scheme: dark)">
+        <img src="/logo.png" alt="şapak" width="788" height="204">
+      </picture>
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#mission"><span lang="tk">Maksadymyz</span><span lang="en">Mission</span><span lang="ru">Цели</span></a>
