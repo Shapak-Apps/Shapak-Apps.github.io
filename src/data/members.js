@@ -1,0 +1,73 @@
+// Agzalar. Öz maglumatyňy üýtgetmek üçin: şu faýly üýtgedip Pull Request aç.
+export const members = [
+  {
+    id: 'seydi',
+    name: 'Seydi Charyyev',
+    role: {
+      tk: 'Full Stack JavaScript inžener · React Native',
+      en: 'Full-stack JavaScript engineer · React Native',
+      ru: 'Full-stack JavaScript инженер · React Native',
+    },
+    focus: { tk: 'Mobil', en: 'Mobile', ru: 'Моб.' },
+    avatar: 'https://avatars.githubusercontent.com/TheSeydiCharyyev',
+    github: 'https://github.com/TheSeydiCharyyev',
+    portfolio: '',
+    email: '',
+  },
+  {
+    id: 'aynazar',
+    name: 'Aýnazar Sylyýew',
+    role: {
+      tk: 'Programma inženeri · Android, web, kross-platforma',
+      en: 'Software engineer · Android, web, cross-platform',
+      ru: 'Инженер-программист · Android, веб, кросс-платформа',
+    },
+    focus: { tk: 'Mobil + Web', en: 'Mobile + Web', ru: 'Моб. + Веб' },
+    avatar: 'https://avatars.githubusercontent.com/aynazar-sylyyew-dev',
+    github: 'https://github.com/aynazar-sylyyew-dev',
+    portfolio: '',
+    email: '',
+  },
+  {
+    id: 'bahram',
+    name: 'Bahram Myradow',
+    role: {
+      tk: 'Fullstack JavaScript inžener · React Native',
+      en: 'Full-stack JavaScript engineer · React Native',
+      ru: 'Full-stack JavaScript инженер · React Native',
+    },
+    focus: { tk: 'Mobil', en: 'Mobile', ru: 'Моб.' },
+    avatar: 'https://avatars.githubusercontent.com/bahrammyradow',
+    github: 'https://github.com/bahrammyradow',
+    portfolio: '',
+    email: '',
+  },
+  {
+    id: 'merdan',
+    name: 'Merdan Jumamyradow',
+    role: {
+      tk: 'Web we mobil programmaçy · JavaScript, Dart, Go',
+      en: 'Web & mobile developer · JavaScript, Dart, Go',
+      ru: 'Веб- и мобильный разработчик · JavaScript, Dart, Go',
+    },
+    focus: { tk: 'Web + Mobil', en: 'Web + Mobile', ru: 'Веб + Моб.' },
+    avatar: 'https://avatars.githubusercontent.com/merdanusa',
+    github: 'https://github.com/merdanusa',
+    portfolio: '',
+    email: '',
+  },
+  {
+    id: 'ahmed',
+    name: 'Ahmed Batyrov',
+    role: {
+      tk: 'Web programmaçy · Node.js, React',
+      en: 'Web developer · Node.js, React',
+      ru: 'Веб-разработчик · Node.js, React',
+    },
+    focus: { tk: 'Web', en: 'Web', ru: 'Веб' },
+    avatar: 'https://avatars.githubusercontent.com/ahmedbatyrovv',
+    github: 'https://github.com/ahmedbatyrovv',
+    portfolio: 'https://ahmed.batyrovv.su',
+    email: 'ahmed.batyrovv@gmail.com',
+  },
+]

@@ -1,350 +1,46 @@
-<!doctype html>
-<html lang="tk" data-lang="tk">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Şapak Apps — Open Source Turkmenistan</title>
-<meta name="description" content="Open-source software built in Turkmenistan: apps in Turkmen, code on GitHub, MIT, Apache-2.0 and GPL-3.0 licensed. Language learning apps, tools, and a community that reviews code in Turkmen and Russian.">
-<link rel="canonical" href="https://shapak-apps.github.io/">
-<link rel="icon" href="/icon.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<meta name="theme-color" content="#FBFAF8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<!DOCTYPE html>
+<html lang="tk">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo-light.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>şapak. — Türkmenistanda döredilýän açyk kodly programma üpjünçiligi</title>
+    <meta name="description" content="Şapak Apps — türkmen dilinde işleýän, açyk kodly we mugt programmalar döredýän jemgyýet." />
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Şapak Apps">
-<meta property="og:title" content="Open Source Turkmenistan">
-<meta property="og:description" content="Open-source software built in Turkmenistan. Apps in Turkmen, code on GitHub, MIT and Apache-2.0.">
-<meta property="og:url" content="https://shapak-apps.github.io/">
-<meta property="og:image" content="https://shapak-apps.github.io/assets/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="tk_TM">
-<meta property="og:locale:alternate" content="ru_RU">
-<meta property="og:locale:alternate" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Open Source Turkmenistan">
-<meta name="twitter:description" content="Open-source software built in Turkmenistan. Apps in Turkmen, code on GitHub, MIT and Apache-2.0.">
-<meta name="twitter:image" content="https://shapak-apps.github.io/assets/og.png">
+    <meta property="og:title" content="şapak. — Open Source Türkmenistan" />
+    <meta property="og:description" content="Türkmen dilinde işleýän, açyk kodly we mugt programmalar." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shapak-apps.github.io/" />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Şapak Apps",
-  "alternateName": "Open Source Turkmenistan",
-  "url": "https://shapak-apps.github.io/",
-  "logo": "https://shapak-apps.github.io/assets/apple-touch-icon.png",
-  "email": "shapak.apps@gmail.com",
-  "sameAs": ["https://github.com/Shapak-Apps"]
-}
-</script>
+    <!-- tema flaşyny aýyrmak üçin: CSS-den öň işlemeli. Tema diňe enjamyň OS sazlamasyndan. -->
+    <script>
+      (function () {
+        try {
+          var d = matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', d);
+          var l = localStorage.getItem('shapak-lang') || 'tk';
+          document.documentElement.setAttribute('lang', l);
+        } catch (e) {}
+      })();
+    </script>
 
-<link rel="stylesheet" href="/assets/site.css?v=20260911b">
-<style>
-/* ---------- заявление ----------- */
-.hero{padding:84px 0 60px}
-.hero h1{
-  margin:0; font-size:clamp(34px,4.6vw,58px); font-weight:500;
-  line-height:1.05; letter-spacing:-.03em; max-width:22ch;
-}
-.hero .lead{margin:28px 0 0; color:var(--muted); font-size:19px; max-width:58ch}
+    <!-- GitHub Pages SPA: 404.html-den gelen ýoly dikeldýär -->
+    <script>
+      (function () {
+        var r = new URLSearchParams(window.location.search).get('redirect');
+        if (r) history.replaceState(null, '', r);
+      })();
+    </script>
 
-.stats{
-  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 32px;
-  margin:56px 0 0; padding:32px 0 0; border-top:1px solid var(--rule);
-}
-.stat{text-decoration:none; display:block}
-.stat b.lic{font-size:24px; padding-top:8px}
-.stat b{display:block; font-size:34px; font-weight:500; letter-spacing:-.03em; line-height:1}
-.stat small{
-  display:block; margin-top:10px; font-family:var(--mono); font-size:11px;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
-}
-a.stat:hover b{color:var(--accent)}
-
-/* ---------- принципы ---------- */
-.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px}
-.principle{border-top:2px solid var(--fg); padding-top:14px}
-.principle h3{margin:0; font-size:17px; font-weight:600; letter-spacing:-.01em}
-.principle p{margin:10px 0 0; color:var(--muted); font-size:15px}
-
-/* ---------- люди ---------- */
-.members{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:44px 40px; margin:44px 0 0}
-.member{border-top:2px solid var(--fg); padding-top:24px}
-.member .who{display:flex; flex-direction:column; align-items:flex-start; gap:18px}
-.member img{width:84px; height:84px; border-radius:50%; background:var(--rule); display:block; flex:none}
-.member h3{margin:0; font-size:20px; font-weight:600; letter-spacing:-.015em}
-.member .role{margin:6px 0 0; color:var(--muted); font-size:15.5px; line-height:1.45}
-.member .links{margin:18px 0 0; display:flex; gap:16px; flex-wrap:wrap; font-size:14.5px}
-.member .links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
-.member .links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
-
-/* ---------- участие ---------- */
-.steps{margin:0; padding:0; list-style:none; counter-reset:s; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px 40px}
-.steps li{counter-increment:s; border-top:1px solid var(--rule); padding-top:14px; font-size:16px}
-.steps li::before{
-  content:counter(s,decimal-leading-zero); display:block; font-family:var(--mono);
-  font-size:11px; color:var(--accent); letter-spacing:.12em; margin-bottom:10px;
-}
-.promise{margin:44px 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 40px; align-items:start}
-.promise h3{margin:0 0 8px; font-size:17px; font-weight:600}
-.promise ul{margin:0; padding:0; list-style:none}
-.promise li{padding:10px 0; border-top:1px solid var(--rule); font-size:16px}
-.promise p{margin:0; font-size:16px}
-
-@media (max-width:960px){
-  .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .members{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:860px){
-  .steps{grid-template-columns:1fr}
-  .promise{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:640px){
-  .hero{padding:52px 0 48px}
-  .hero .lead{font-size:17px}
-  .principles{grid-template-columns:1fr}
-  .members{grid-template-columns:1fr}
-  .stat b{font-size:28px}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-
-  <header class="masthead">
-    <a class="brand" href="/">
-      <img src="/logo.svg" alt="şapak" width="788" height="204">
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#mission"><span lang="tk">Maksadymyz</span><span lang="en">Mission</span><span lang="ru">Цели</span></a>
-      <a href="/projects/"><span lang="tk">Taslamalar</span><span lang="en">Projects</span><span lang="ru">Проекты</span></a>
-      <a href="#people"><span lang="tk">Adamlar</span><span lang="en">People</span><span lang="ru">Люди</span></a>
-      <a href="#contribute"><span lang="tk">Goşant goşmak</span><span lang="en">Contributing</span><span lang="ru">Участие</span></a>
-    </nav>
-    <div class="langsel">
-      <button data-lang-btn="tk" aria-pressed="true">TK</button>
-      <button data-lang-btn="ru" aria-pressed="false">RU</button>
-      <button data-lang-btn="en" aria-pressed="false">EN</button>
-    </div>
-  </header>
-
-  <main>
-
-  <div class="hero">
-    <p class="eyebrow">Open Source Turkmenistan</p>
-    <h1>
-      <span lang="tk">Türkmenistanda döredilýän açyk kodly programma üpjünçiligi</span>
-      <span lang="en">Open-source software built in Turkmenistan</span>
-      <span lang="ru">Открытое программное обеспечение, созданное в Туркменистане</span>
-    </h1>
-    <p class="lead">
-      <span lang="tk">Şapak Apps — türkmen dilinde işleýän, açyk kodly we mugt programmalar döredýän jemgyýet. Kod GitHub-da, programmalar dükanlarda.</span>
-      <span lang="en">Şapak Apps is a community that builds free, open-source software in Turkmen. The code is on GitHub. The apps are in the stores.</span>
-      <span lang="ru">Şapak Apps — сообщество, которое создаёт бесплатные программы с открытым кодом на туркменском языке. Код — на GitHub, приложения — в магазинах.</span>
-    </p>
-
-    <div class="stats">
-      <a class="stat" href="/projects/">
-        <b>2</b>
-        <small><span lang="tk">programma dükanlarda</span><span lang="en">apps in the stores</span><span lang="ru">приложения в магазинах</span></small>
-      </a>
-      <a class="stat" href="/projects/">
-        <b>6</b>
-        <small><span lang="tk">açyk taslama</span><span lang="en">open projects</span><span lang="ru">открытых проектов</span></small>
-      </a>
-      <a class="stat" href="#people">
-        <b>5</b>
-        <small><span lang="tk">agza</span><span lang="en">members</span><span lang="ru">участников</span></small>
-      </a>
-      <a class="stat" href="#principles">
-        <b class="lic">MIT · Apache · GPL</b>
-        <small><span lang="tk">ygtyýarnamalar</span><span lang="en">licenses</span><span lang="ru">лицензии</span></small>
-      </a>
-    </div>
-  </div>
-
-  <section id="mission">
-    <p class="label"><span lang="tk">Maksadymyz</span><span lang="en">Mission</span><span lang="ru">Цели</span></p>
-    <div class="prose">
-      <p lang="tk">Türkmen dilinde programma üpjünçiligi az. Dünýä programmalary iňlis dilinden öwredýär, rus programmalary rus dilinden. Türkmen ulanyjy üçin ýazylany welin az.</p>
-      <p lang="tk">Biz şol boşlugy doldurýarys — okuw taslamalary bilen däl-de, hakykatdan hem goýberilýän programmalar bilen. Ýazan kodyň dükandaky programma düşýär.</p>
-      <p lang="tk">Açyk kod bu ýerde goşmaça däl, ikinji önüm: türkmen dilinde kod barlagy geçirilýän janly programmada ilkinji Pull Request etmäge başga ýer ýok.</p>
-      <p lang="en">There is very little software in Turkmen. Global apps teach from English, Russian apps teach from Russian. Almost nobody builds for a Turkmen speaker.</p>
-      <p lang="en">We fill that gap — not with tutorial projects, but with apps that are really released. The code you write ends up in an app people install.</p>
-      <p lang="en">Open code here is not an extra, it is the second product: there is no other place to make a first pull request into a live app with code review in Turkmen.</p>
-      <p lang="ru">Программного обеспечения на туркменском языке почти нет. Мировые приложения учат с английского, российские — с русского. Для туркменоязычного пользователя почти никто не разрабатывает.</p>
-      <p lang="ru">Мы заполняем этот пробел — не учебными проектами, а приложениями, которые действительно выходят. Код, который вы пишете, попадает в приложение, которое люди устанавливают.</p>
-      <p lang="ru">Открытый код здесь не дополнение, а второй продукт: больше негде сделать первый pull request в живое приложение с ревью кода на туркменском.</p>
-    </div>
-  </section>
-
-  <section id="principles">
-    <p class="label"><span lang="tk">Ýörelgeler</span><span lang="en">Principles</span><span lang="ru">Принципы</span></p>
-    <div class="principles">
-      <div class="principle">
-        <h3><span lang="tk">Açyk kod</span><span lang="en">Open code</span><span lang="ru">Открытый код</span></h3>
-        <p lang="tk">Ähli repozitoriýalar açyk. MIT, Apache-2.0 we GPL-3.0: alyp bolýar, üýtgedip bolýar, öz işiňde ulanyp bolýar.</p>
-        <p lang="en">Every repository is public. MIT, Apache-2.0 and GPL-3.0: take it, change it, use it in your own work.</p>
-        <p lang="ru">Все репозитории публичны. MIT, Apache-2.0 и GPL-3.0: берите, меняйте, используйте в своей работе.</p>
-      </div>
-      <div class="principle">
-        <h3><span lang="tk">Internetsiz</span><span lang="en">Offline</span><span lang="ru">Офлайн</span></h3>
-        <p lang="tk">Programmalaryň hiç biri internet talap etmeýär. Türkmenistanda internet gymmat we haýal — bu tehniki karar hem, garaýyş hem.</p>
-        <p lang="en">None of the apps needs a network. Internet in Turkmenistan is expensive and slow — this is a technical choice and a position.</p>
-        <p lang="ru">Ни одно из приложений не требует сети. Интернет в Туркменистане дорогой и медленный — это и техническое решение, и позиция.</p>
-      </div>
-      <div class="principle">
-        <h3><span lang="tk">Mahabatsyz we tölegsiz</span><span lang="en">No ads, no fees</span><span lang="ru">Без рекламы и платежей</span></h3>
-        <p lang="tk">Dükandaky programmalar mugt, mahabatsyz we hiç hili maglumat ýygnamaýar. Gizlinlik syýasatlary aşakda.</p>
-        <p lang="en">The apps in the stores are free, without ads, and collect no data at all. Privacy policies are below.</p>
-        <p lang="ru">Приложения в магазинах бесплатны, без рекламы и не собирают никаких данных. Политики конфиденциальности — ниже.</p>
-      </div>
-      <div class="principle">
-        <h3><span lang="tk">Türkmen dilinde</span><span lang="en">In Turkmen</span><span lang="ru">На туркменском</span></h3>
-        <p lang="tk">Interfeýs türkmen dilinde. Kod barlagy türkmen we rus dillerinde geçirilýär — iňlis diliň gowşak bolsa-da päsgel däl.</p>
-        <p lang="en">The interface is in Turkmen. Code review is in Turkmen and Russian — weak English is not a blocker.</p>
-        <p lang="ru">Интерфейс на туркменском языке. Ревью кода проходит на туркменском и русском — слабый английский не помеха.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <p class="label"><span lang="tk">Taslamalar</span><span lang="en">Projects</span><span lang="ru">Проекты</span></p>
-    <div class="prose">
-      <p lang="tk">Häzir iki ugur bar. Dil öwrediş programmalary — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — we gurallar: Köpri, BluePlayer, Küşt. Hemmesi açyk, hemmesi GitHub-da.</p>
-      <p lang="tk">Esasy ünsümiz dil öwrediş liniýasynda. Hereketlendiriji bir, her täze dil — diňe täze mazmun we täze nyşan, şonuň üçin her indiki programma öňküden çalt çykýar.</p>
-      <p lang="tk">Öz açyk kodly taslamaň bar bolsa we ony türkmen jemgyýetiniň içinde ösdürmek isleseň — hat ýaz. Repozitoriý guramanyň astyna geçýär, awtorlyk seniňki bolup galýar.</p>
-      <p lang="en">There are two lines today. Language learning apps — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — and tools: Köpri, BluePlayer, Küşt. All open, all on GitHub.</p>
-      <p lang="en">The main focus is the language line. The engine is shared; each new language is only new content and a new icon, so every next app ships faster than the one before.</p>
-      <p lang="en">If you have an open-source project and want to grow it inside the Turkmen community — write to us. The repository moves under the organization, the authorship stays yours.</p>
-      <p lang="ru">Сегодня два направления. Приложения для изучения языков — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — и инструменты: Köpri, BluePlayer, Küşt. Всё открыто, всё на GitHub.</p>
-      <p lang="ru">Главный фокус — языковая линейка. Движок общий, каждый новый язык — только новый контент и новый значок, поэтому каждое следующее приложение выходит быстрее предыдущего.</p>
-      <p lang="ru">Если у вас есть проект с открытым кодом и вы хотите развивать его внутри туркменского сообщества — напишите нам. Репозиторий переходит под организацию, авторство остаётся за вами.</p>
-    </div>
-    <div class="ctas">
-      <a class="cta" href="/projects/"><span lang="tk">Ähli taslamalar →</span><span lang="en">All projects →</span><span lang="ru">Все проекты →</span></a>
-      <a class="cta quiet" href="https://github.com/Shapak-Apps"><span lang="tk">GitHub-da gurama</span><span lang="en">Organization on GitHub</span><span lang="ru">Организация на GitHub</span></a>
-    </div>
-  </section>
-
-  <section id="people">
-    <p class="label"><span lang="tk">Adamlar</span><span lang="en">People</span><span lang="ru">Люди</span></p>
-    <div class="prose two">
-      <p lang="tk">Şapak Apps — bir adamyň studiýasy däl. Taslamalar dürli awtorlardan gelýär, hemmesi bir guramada we bir düzgün bilen: açyk kod, açyk meseleler, düşnükli dilde barlag.</p>
-      <p lang="en">Şapak Apps is not one person's studio. Projects come from different authors, all in one organization and under the same rules: open code, open issues, review in a language you understand.</p>
-      <p lang="ru">Şapak Apps — не студия одного человека. Проекты приходят от разных авторов, все в одной организации и по одним правилам: открытый код, открытые задачи, ревью на понятном языке.</p>
-    </div>
-    <div class="members">
-      <article class="member">
-        <div class="who">
-          <img src="https://github.com/TheSeydiCharyyev.png?size=160" alt="" width="84" height="84" loading="lazy">
-          <div>
-            <h3>Seydi Charyyev</h3>
-            <p class="role"><span lang="tk">Full Stack JavaScript inženeri · React Native</span><span lang="en">Full Stack JavaScript Engineer · React Native</span><span lang="ru">Full Stack JavaScript-инженер · React Native</span></p>
-          </div>
-        </div>
-        <div class="links"><a href="https://github.com/TheSeydiCharyyev">GitHub</a></div>
-      </article>
-      <article class="member">
-        <div class="who">
-          <img src="https://github.com/aynazar-sylyyew-dev.png?size=160" alt="" width="84" height="84" loading="lazy">
-          <div>
-            <h3>Aýnazar Sylyýew</h3>
-            <p class="role"><span lang="tk">Programma inženeri · Android, web, kross-platforma</span><span lang="en">Software Engineer · Android, web, cross-platform</span><span lang="ru">Инженер-программист · Android, веб, кроссплатформа</span></p>
-          </div>
-        </div>
-        <div class="links"><a href="https://github.com/aynazar-sylyyew-dev">GitHub</a></div>
-      </article>
-      <article class="member">
-        <div class="who">
-          <img src="https://github.com/Bahram2006.png?size=160" alt="" width="84" height="84" loading="lazy">
-          <div>
-            <h3>Bahram Myradow</h3>
-            <p class="role"><span lang="tk">Fullstack JavaScript inženeri · React Native</span><span lang="en">Fullstack JavaScript Engineer · React Native</span><span lang="ru">Fullstack JavaScript-инженер · React Native</span></p>
-          </div>
-        </div>
-        <div class="links"><a href="https://github.com/Bahram2006">GitHub</a><a href="https://myradow-bahram-portfolio.vercel.app/">Portfolio</a></div>
-      </article>
-      <article class="member">
-        <div class="who">
-          <img src="https://github.com/merdanusa.png?size=160" alt="" width="84" height="84" loading="lazy">
-          <div>
-            <h3>Merdan Jumamyradow</h3>
-            <p class="role"><span lang="tk">Web we mobil programmaçy · JavaScript, Dart, Go</span><span lang="en">Web and mobile developer · JavaScript, Dart, Go</span><span lang="ru">Веб- и мобильный разработчик · JavaScript, Dart, Go</span></p>
-          </div>
-        </div>
-        <div class="links"><a href="https://github.com/merdanusa">GitHub</a></div>
-      </article>
-      <article class="member">
-        <div class="who">
-          <img src="https://github.com/ahmedbatyrovv.png?size=160" alt="" width="84" height="84" loading="lazy">
-          <div>
-            <h3>Ahmed Batyrov</h3>
-            <p class="role"><span lang="tk">Web programmaçy · Node.js, React</span><span lang="en">Web developer · Node.js, React</span><span lang="ru">Веб-разработчик · Node.js, React</span></p>
-          </div>
-        </div>
-        <div class="links"><a href="https://github.com/ahmedbatyrovv">GitHub</a></div>
-      </article>
-    </div>
-  </section>
-
-  <section id="contribute">
-    <p class="label"><span lang="tk">Goşant goşmak</span><span lang="en">Contributing</span><span lang="ru">Участие</span></p>
-    <ol class="steps">
-      <li>
-        <span lang="tk">Täze gelenler üçin meseleleri aç — olar kiçi we anyk bölünen, ilkinji Pull Request üçin amatly.</span>
-        <span lang="en">Open the issues for newcomers — they are small and clearly scoped, a good place for a first pull request.</span>
-        <span lang="ru">Откройте задачи для новичков — они небольшие и чётко очерчены, подходят для первого pull request.</span>
-      </li>
-      <li>
-        <span lang="tk">Repozitoriýany klonla we onuň README-däki gurnama ädimlerini ýerine ýetir.</span>
-        <span lang="en">Clone the repository and follow the setup steps in its README.</span>
-        <span lang="ru">Клонируйте репозиторий и выполните шаги установки из его README.</span>
-      </li>
-      <li>
-        <span lang="tk">Kiçi Pull Request aç — uly üýtgetmeden gowy.</span>
-        <span lang="en">Open a small pull request — better than one big change.</span>
-        <span lang="ru">Откройте небольшой pull request — это лучше одного большого изменения.</span>
-      </li>
-    </ol>
-    <div class="promise">
-      <div>
-        <h3><span lang="tk">Näme wada berýäris</span><span lang="en">What we promise</span><span lang="ru">Что мы обещаем</span></h3>
-        <ul>
-          <li><span lang="tk">Kod barlagy türkmen we rus dillerinde geçirilýär.</span><span lang="en">Code review is in Turkmen and Russian.</span><span lang="ru">Ревью кода проходит на туркменском и русском.</span></li>
-          <li><span lang="tk">Her Pull Request-e birnäçe günüň içinde jogap berilýär.</span><span lang="en">Every pull request gets an answer within a few days.</span><span lang="ru">На каждый pull request отвечаем в течение нескольких дней.</span></li>
-          <li><span lang="tk">Kabul edilen kod indiki goýberilişe düşýär.</span><span lang="en">Accepted code ships in the next release.</span><span lang="ru">Принятый код попадает в следующий релиз.</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3><span lang="tk">Habarlaşmak</span><span lang="en">Contact</span><span lang="ru">Контакты</span></h3>
-        <p lang="tk"><a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a> — türkmen, rus ýa-da iňlis dilinde ýazyp bolýar.</p>
-        <p lang="en"><a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a> — write in Turkmen, Russian or English.</p>
-        <p lang="ru"><a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a> — можно писать на туркменском, русском или английском.</p>
-      </div>
-    </div>
-    <div class="ctas">
-      <a class="cta" href="https://github.com/search?q=org%3AShapak-Apps+is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22&amp;type=issues"><span lang="tk">Täze gelenler üçin meseleler →</span><span lang="en">Issues for newcomers →</span><span lang="ru">Задачи для новичков →</span></a>
-      <a class="cta quiet" href="https://github.com/Shapak-Apps"><span lang="tk">GitHub-da gurama</span><span lang="en">Organization on GitHub</span><span lang="ru">Организация на GitHub</span></a>
-    </div>
-  </section>
-
-  </main>
-
-  <footer>
-    <div class="meta">
-      <a href="https://github.com/Shapak-Apps">github.com/Shapak-Apps</a>
-      <a href="mailto:shapak.apps@gmail.com">shapak.apps@gmail.com</a>
-      <a href="/ykjam-terjime/privacy-policy.html"><span lang="tk">Gizlinlik · Ykjam Terjime</span><span lang="en">Privacy · Ykjam Terjime</span><span lang="ru">Конфиденциальность · Ykjam Terjime</span></a>
-      <a href="/hytay-dili-1/privacy-policy.html"><span lang="tk">Gizlinlik · Hytaý dili 1</span><span lang="en">Privacy · Hytaý dili 1</span><span lang="ru">Конфиденциальность · Hytaý dili 1</span></a>
-      <span>Türkmenistan</span>
-    </div>
-  </footer>
-
-</div>
-<script src="/assets/site.js?v=20260911b"></script>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,440;9..144,560;9..144,650&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
