@@ -1,0 +1,63 @@
+# Сборка сайта на каждый PR в main; сборка и выкладка на GitHub Pages — на каждый пуш в main.
+# Выкладывать в окружение github-pages разрешено только из main (настройки окружения).
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# PR: новая сборка отменяет устаревшую. main: деплои идут по очереди, не прерываясь.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+      # Эти адреса прописаны в App Store / Google Play и в самих приложениях.
+      # 22.09.2026 политика Hytaý dili 1 уже пропадала вместе с перестройкой сайта.
+      - name: Check pages the stores depend on
+        run: |
+          for f in index.html ru/index.html en/index.html projects/index.html 404.html \
+                   hytay-dili-1/privacy-policy.html sitemap.xml robots.txt; do
+            test -s "out/$f" || { echo "::error::out/$f is missing"; exit 1; }
+          done
+
+      - uses: actions/upload-pages-artifact@v5
+        if: github.event_name != 'pull_request'
+        with:
+          path: out
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
