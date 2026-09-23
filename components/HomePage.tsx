@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { LANGS, OG_LOCALE, SITE_URL, languageAlternates, localePath, type Lang } from "@/lib/i18n";
+import { SITE_URL, localePath, type Lang } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { EMAIL, NEWCOMER_ISSUES_URL, ORG_URL, orgOnGitHub } from "@/content/site";
 import { members } from "@/content/people";
 import { contribute, hero, meta, mission, people, principles, projectsIntro, stats } from "@/content/home";
@@ -8,24 +9,13 @@ import { Footer } from "./Footer";
 import "./home.css";
 
 export function homeMetadata(lang: Lang): Metadata {
-  const url = localePath(lang, "/");
-  return {
-    metadataBase: new URL(SITE_URL),
+  return pageMetadata({
+    lang,
+    path: "/",
     title: meta.title[lang],
     description: meta.description[lang],
-    alternates: { canonical: url, languages: languageAlternates("/") },
-    openGraph: {
-      type: "website",
-      siteName: "Şapak Apps",
-      title: meta.ogTitle,
-      description: meta.description[lang],
-      url,
-      locale: OG_LOCALE[lang],
-      alternateLocale: LANGS.filter((l) => l !== lang).map((l) => OG_LOCALE[l]),
-      images: [{ url: "/assets/og.png", width: 1200, height: 630 }],
-    },
-    twitter: { card: "summary_large_image", title: meta.ogTitle, description: meta.description[lang], images: ["/assets/og.png"] },
-  };
+    ogTitle: meta.ogTitle,
+  });
 }
 
 const orgJsonLd = {
