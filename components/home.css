@@ -1,0 +1,68 @@
+/* Главная. Общие стили — app/globals.css. */
+/* ---------- заявление ---------- */
+.hero{padding:84px 0 60px}
+.hero h1{
+  margin:0; font-size:clamp(34px,4.6vw,58px); font-weight:500;
+  line-height:1.05; letter-spacing:-.03em; max-width:22ch;
+}
+.hero .lead{margin:28px 0 0; color:var(--muted); font-size:19px; max-width:58ch}
+
+.stats{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 32px;
+  margin:56px 0 0; padding:32px 0 0; border-top:1px solid var(--rule);
+}
+.stat{text-decoration:none; display:block}
+.stat b.lic{font-size:24px; padding-top:8px}
+.stat b{display:block; font-size:34px; font-weight:500; letter-spacing:-.03em; line-height:1}
+.stat small{
+  display:block; margin-top:10px; font-family:var(--mono); font-size:11px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+}
+a.stat:hover b{color:var(--accent)}
+
+/* ---------- принципы ---------- */
+.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px}
+.principle{border-top:2px solid var(--fg); padding-top:14px}
+.principle h3{margin:0; font-size:17px; font-weight:600; letter-spacing:-.01em}
+.principle p{margin:10px 0 0; color:var(--muted); font-size:15px}
+
+/* ---------- люди ---------- */
+.members{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:44px 40px; margin:44px 0 0}
+.member{border-top:2px solid var(--fg); padding-top:24px}
+.member .who{display:flex; flex-direction:column; align-items:flex-start; gap:18px}
+.member img{width:84px; height:84px; border-radius:50%; background:var(--rule); display:block; flex:none}
+.member h3{margin:0; font-size:20px; font-weight:600; letter-spacing:-.015em}
+.member .role{margin:6px 0 0; color:var(--muted); font-size:15.5px; line-height:1.45}
+.member .links{margin:18px 0 0; display:flex; gap:16px; flex-wrap:wrap; font-size:14.5px}
+.member .links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
+.member .links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
+
+/* ---------- участие ---------- */
+.steps{margin:0; padding:0; list-style:none; counter-reset:s; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px 40px}
+.steps li{counter-increment:s; border-top:1px solid var(--rule); padding-top:14px; font-size:16px}
+.steps li::before{
+  content:counter(s,decimal-leading-zero); display:block; font-family:var(--mono);
+  font-size:11px; color:var(--accent); letter-spacing:.12em; margin-bottom:10px;
+}
+.promise{margin:44px 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 40px; align-items:start}
+.promise h3{margin:0 0 8px; font-size:17px; font-weight:600}
+.promise ul{margin:0; padding:0; list-style:none}
+.promise li{padding:10px 0; border-top:1px solid var(--rule); font-size:16px}
+.promise p{margin:0; font-size:16px}
+
+@media (max-width:960px){
+  .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .members{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .steps{grid-template-columns:1fr}
+  .promise{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .hero{padding:52px 0 48px}
+  .hero .lead{font-size:17px}
+  .principles{grid-template-columns:1fr}
+  .members{grid-template-columns:1fr}
+  .stat b{font-size:28px}
+}
