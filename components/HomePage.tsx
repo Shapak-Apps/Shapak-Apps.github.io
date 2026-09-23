@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { SITE_URL, localePath, type Lang } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -6,6 +7,7 @@ import { members } from "@/content/people";
 import { contribute, hero, meta, mission, people, principles, projectsIntro, stats } from "@/content/home";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { RevealOnScroll } from "./RevealOnScroll";
 import "./home.css";
 
 export function homeMetadata(lang: Lang): Metadata {
@@ -52,7 +54,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
         </div>
 
-        <section id="mission">
+        <section id="mission" className="reveal">
           <p className="label">{mission.label[lang]}</p>
           <div className="prose">
             {mission.paragraphs.map((p, i) => (
@@ -62,10 +64,10 @@ export function HomePage({ lang }: { lang: Lang }) {
         </section>
 
         <section id="principles">
-          <p className="label">{principles.label[lang]}</p>
+          <p className="label reveal">{principles.label[lang]}</p>
           <div className="principles">
             {principles.items.map((item, i) => (
-              <div key={i} className="principle">
+              <div key={i} className="principle reveal" style={{ "--d": `${(i % 4) * 0.1}s` } as CSSProperties}>
                 <h3>{item.title[lang]}</h3>
                 <p>{item.text[lang]}</p>
               </div>
@@ -73,7 +75,7 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
         </section>
 
-        <section id="projects">
+        <section id="projects" className="reveal">
           <p className="label">{projectsIntro.label[lang]}</p>
           <div className="prose">
             {projectsIntro.paragraphs.map((p, i) => (
@@ -87,13 +89,13 @@ export function HomePage({ lang }: { lang: Lang }) {
         </section>
 
         <section id="people">
-          <p className="label">{people.label[lang]}</p>
+          <p className="label reveal">{people.label[lang]}</p>
           <div className="prose two">
-            <p>{people.text[lang]}</p>
+            <p className="reveal">{people.text[lang]}</p>
           </div>
           <div className="members">
-            {members.map((m) => (
-              <article key={m.github} className="member">
+            {members.map((m, i) => (
+              <article key={m.github} className="member reveal" style={{ "--d": `${(i % 3) * 0.1}s` } as CSSProperties}>
                 <div className="who">
                   <img src={`https://github.com/${m.github}.png?size=160`} alt="" width={84} height={84} loading="lazy" />
                   <div>
@@ -111,13 +113,13 @@ export function HomePage({ lang }: { lang: Lang }) {
         </section>
 
         <section id="contribute">
-          <p className="label">{contribute.label[lang]}</p>
+          <p className="label reveal">{contribute.label[lang]}</p>
           <ol className="steps">
             {contribute.steps.map((s, i) => (
-              <li key={i}>{s[lang]}</li>
+              <li key={i} className="reveal" style={{ "--d": `${i * 0.1}s` } as CSSProperties}>{s[lang]}</li>
             ))}
           </ol>
-          <div className="promise">
+          <div className="promise reveal">
             <div>
               <h3>{contribute.promiseTitle[lang]}</h3>
               <ul>
@@ -133,7 +135,7 @@ export function HomePage({ lang }: { lang: Lang }) {
               </p>
             </div>
           </div>
-          <div className="ctas">
+          <div className="ctas reveal">
             <a className="cta" href={NEWCOMER_ISSUES_URL}>{contribute.newcomerIssues[lang]}</a>
             <a className="cta quiet" href={ORG_URL}>{orgOnGitHub[lang]}</a>
           </div>
@@ -141,6 +143,7 @@ export function HomePage({ lang }: { lang: Lang }) {
       </main>
 
       <Footer lang={lang} />
+      <RevealOnScroll />
     </div>
   );
 }
