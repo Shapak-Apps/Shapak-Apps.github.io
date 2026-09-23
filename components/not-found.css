@@ -1,0 +1,14 @@
+/* Страница 404. Общие стили — app/globals.css. */
+.nf{padding-top:34px}
+.nf .brand{display:inline-block}
+.nf h1{
+  margin:76px 0 0; font-size:clamp(30px,4vw,48px); font-weight:500;
+  letter-spacing:-.03em; line-height:1.06;
+}
+.nf h1 span{color:var(--muted); font-weight:400}
+.nf p{color:var(--muted); font-size:18px; margin:22px 0 0; max-width:60ch}
+.nf .ctas{margin-top:30px}
+
+@media (max-width:640px){
+  .nf{padding-top:26px}
+}

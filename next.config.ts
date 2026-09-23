@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // Оптимизатор картинок требует сервер; на Pages его нет.
   images: { unoptimized: true },
+  experimental: {
+    // Одна 404 на весь сайт при двух корневых раскладках (app/global-not-found.tsx).
+    globalNotFound: true,
+  },
 };
 
 export default nextConfig;
