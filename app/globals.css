@@ -1,4 +1,4 @@
-/* Şapak Apps — общие стили всех страниц. Стили конкретной страницы — в её <style>. */
+/* Şapak Apps — общие стили всех страниц. Стили конкретной страницы — в components/<page>.css. */
 :root{
   --bg:#FBFAF8; --fg:#17150F; --muted:#6E675B; --rule:#E3DFD6;
   --brand:#FF851B;
@@ -24,11 +24,6 @@ img{max-width:100%}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
 .wrap{max-width:1120px; margin:0 auto; padding:0 48px 80px}
 
-/* ---------- языки: виден только выбранный ---------- */
-[data-lang="tk"] [lang="en"],[data-lang="tk"] [lang="ru"],
-[data-lang="en"] [lang="tk"],[data-lang="en"] [lang="ru"],
-[data-lang="ru"] [lang="tk"],[data-lang="ru"] [lang="en"]{display:none}
-
 /* ---------- шапка ---------- */
 .masthead{
   display:flex; align-items:center; gap:24px 36px; padding:34px 0 0; flex-wrap:wrap;
@@ -40,12 +35,12 @@ img{max-width:100%}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--fg)}
 
 .langsel{display:flex; gap:2px; font-family:var(--mono); font-size:11px}
-.langsel button{
-  appearance:none; border:0; background:none; cursor:pointer; color:var(--muted);
-  font:inherit; letter-spacing:.09em; padding:5px 7px; border-radius:3px;
+.langsel a{
+  color:var(--muted); text-decoration:none;
+  letter-spacing:.09em; padding:5px 7px; border-radius:3px;
 }
-.langsel button:hover{color:var(--fg)}
-.langsel button[aria-pressed="true"]{color:var(--fg); background:var(--accent-soft)}
+.langsel a:hover{color:var(--fg)}
+.langsel a[aria-current="true"]{color:var(--fg); background:var(--accent-soft)}
 
 /* ---------- общие блоки ---------- */
 .eyebrow{
