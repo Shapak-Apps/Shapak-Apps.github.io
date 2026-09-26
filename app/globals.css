@@ -83,3 +83,23 @@ footer{margin:88px 0 0; border-top:1px solid var(--rule); padding:24px 0 0}
   .nav{order:3; flex-basis:100%; gap:8px 20px; font-size:14px}
   section{padding-top:56px}
 }
+/* ---------- появление при прокрутке (RevealOnScroll) ---------- */
+/* body .reveal — специфичность 11, побеждает .project (10) и гарантирует работу на /projects/ */
+body .reveal {
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
+  transition-delay: var(--d, 0s);
+}
+body .reveal.pending {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.pending {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
