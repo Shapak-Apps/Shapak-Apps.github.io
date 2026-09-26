@@ -64,21 +64,11 @@
 .star .n:empty{display:none}
 .star .n::after{content:" · "; font-weight:400; color:var(--muted)}
 
-/* ---------- появление при прокрутке ---------- */
-/* Прячутся только карточки ниже первого экрана (класс .pending ставит RevealOnScroll).
-   Без JS, до загрузки JS и при reduced motion всё видно сразу. */
-.project.reveal{
-  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
-  transition-delay:var(--d,0s);
-}
-.project.reveal.pending{opacity:0; transform:translateY(16px); transition:none}
-
 /* ---------- завершение ---------- */
 .after{padding:64px 0 0}
 .after p{margin:0; font-size:16.5px; max-width:60ch}
 
 @media (prefers-reduced-motion:reduce){
-  .project.reveal,.project.reveal.pending{opacity:1; transform:none; transition:none}
   .status.live::before{animation:none}
   .project,.project .icon{transition:none}
   .project:hover,.project:hover .icon{transform:none}
