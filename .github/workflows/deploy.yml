@@ -43,6 +43,10 @@ jobs:
             test -s "out/$f" || { echo "::error::out/$f is missing"; exit 1; }
           done
 
+      # 🛡️ Hard limit: проверка веса JS-бандлов на каждой странице
+      - name: Check bundle size limit
+        run: npm run check:size
+
       - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request'
         with:
