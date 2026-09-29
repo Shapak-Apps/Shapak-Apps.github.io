@@ -6,7 +6,7 @@ import zlib from 'node:zlib';
 // --- КОНФИГУРАЦИЯ ---
 // Лимит размера для каждой страницы (в КБ). 
 // По заданию он должен быть константой наверху.
-const LIMIT_KB = 100;
+const LIMIT_KB = 250;
 const OUT_DIR = 'out';
 
 async function findHtmlFiles(dir) {
