@@ -7,6 +7,8 @@ export const NEWCOMER_ISSUES_URL =
 
 export const nav = {
   sections: { tk: "Bölümler", ru: "Разделы", en: "Sections" },
+  menu: { tk: "Menýu", ru: "Меню", en: "Menu" },
+  close: { tk: "Ýap", ru: "Закрыть", en: "Close" },
   mission: { tk: "Maksadymyz", ru: "Цели", en: "Mission" },
   projects: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
   people: { tk: "Adamlar", ru: "Люди", en: "People" },
