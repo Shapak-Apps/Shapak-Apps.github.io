@@ -14,120 +14,104 @@ export const meta = {
   ogTitle: "Open Source Turkmenistan",
 } satisfies Record<string, L | string>;
 
+/** Первый экран — как баннер организации: знак, имя, одна строка, ряд приложений. */
 export const hero = {
-  eyebrow: "Open Source Turkmenistan",
-  title: {
-    tk: "Türkmenistanda döredilýän açyk kodly programma üpjünçiligi",
-    ru: "Открытое программное обеспечение, созданное в Туркменистане",
-    en: "Open-source software built in Turkmenistan",
-  },
+  title: "Open Source Turkmenistan",
   lead: {
-    tk: "Şapak Apps — türkmen dilinde işleýän, açyk kodly we mugt programmalar döredýän jemgyýet. Kod GitHub-da, programmalar dükanlarda.",
-    ru: "Şapak Apps — сообщество, которое создаёт бесплатные программы с открытым кодом на туркменском языке. Код — на GitHub, приложения — в магазинах.",
-    en: "Şapak Apps is a community that builds free, open-source software in Turkmen. The code is on GitHub. The apps are in the stores.",
+    tk: "Türkmen dilinde mugt programmalar: dil kurslary, terjimeçiler we gurallar.",
+    ru: "Бесплатные программы на туркменском: языковые курсы, переводчики и инструменты.",
+    en: "Free software in Turkmen: language courses, translators and tools.",
   },
+  allProjects: { tk: "Ähli taslamalar →", ru: "Все проекты →", en: "All projects →" },
+  /** Подпись стрелки «листай» внизу первого экрана (для экранных дикторов). */
+  scrollCue: { tk: "Aşak", ru: "Вниз", en: "Scroll down" },
 };
 
-/** target: "projects" — страница проектов, иначе якорь на главной. */
-export const stats: { value: string; label: L; target: "projects" | "#people" | "#principles"; small?: boolean }[] = [
-  { value: "2", target: "projects", label: { tk: "programma dükanlarda", ru: "приложения в магазинах", en: "apps in the stores" } },
-  { value: "6", target: "projects", label: { tk: "açyk taslama", ru: "открытых проектов", en: "open projects" } },
-  { value: "5", target: "#people", label: { tk: "agza", ru: "участников", en: "members" } },
-  { value: "MIT · Apache · GPL", target: "#principles", small: true, label: { tk: "ygtyýarnamalar", ru: "лицензии", en: "licenses" } },
-];
-
+/** Заявление крупным шрифтом: первая фраза — белым, вторая — приглушённо. */
 export const mission = {
   label: { tk: "Maksadymyz", ru: "Цели", en: "Mission" },
-  paragraphs: [
-    {
-      tk: "Türkmen dilinde programma üpjünçiligi az. Dünýä programmalary iňlis dilinden öwredýär, rus programmalary rus dilinden. Türkmen ulanyjy üçin ýazylany welin az.",
-      ru: "Программного обеспечения на туркменском языке почти нет. Мировые приложения учат с английского, российские — с русского. Для туркменоязычного пользователя почти никто не разрабатывает.",
-      en: "There is very little software in Turkmen. Global apps teach from English, Russian apps teach from Russian. Almost nobody builds for a Turkmen speaker.",
-    },
-    {
-      tk: "Biz şol boşlugy doldurýarys — okuw taslamalary bilen däl-de, hakykatdan hem goýberilýän programmalar bilen. Ýazan kodyň dükandaky programma düşýär.",
-      ru: "Мы заполняем этот пробел — не учебными проектами, а приложениями, которые действительно выходят. Код, который вы пишете, попадает в приложение, которое люди устанавливают.",
-      en: "We fill that gap — not with tutorial projects, but with apps that are really released. The code you write ends up in an app people install.",
-    },
-    {
-      tk: "Açyk kod bu ýerde goşmaça däl, ikinji önüm: türkmen dilinde kod barlagy geçirilýän janly programmada ilkinji Pull Request etmäge başga ýer ýok.",
-      ru: "Открытый код здесь не дополнение, а второй продукт: больше негде сделать первый pull request в живое приложение с ревью кода на туркменском.",
-      en: "Open code here is not an extra, it is the second product: there is no other place to make a first pull request into a live app with code review in Turkmen.",
-    },
-  ] satisfies L[],
+  strong: {
+    tk: "Türkmen dilinde programma üpjünçiligi az.",
+    ru: "Программ на туркменском почти нет.",
+    en: "There is very little software in Turkmen.",
+  },
+  rest: {
+    tk: "Biz şol boşlugy doldurýarys — okuw taslamalary bilen däl-de, hakykatdan hem goýberilýän programmalar bilen.",
+    ru: "Мы заполняем этот пробел — не учебными проектами, а приложениями, которые действительно выходят.",
+    en: "We fill that gap — not with tutorial projects, but with apps that really ship.",
+  },
 };
 
 export const principles = {
-  label: { tk: "Ýörelgeler", ru: "Принципы", en: "Principles" },
+  title: { tk: "Ýörelgeler", ru: "Принципы", en: "Principles" },
   items: [
     {
       title: { tk: "Açyk kod", ru: "Открытый код", en: "Open code" },
       text: {
-        tk: "Ähli repozitoriýalar açyk. MIT, Apache-2.0 we GPL-3.0: alyp bolýar, üýtgedip bolýar, öz işiňde ulanyp bolýar.",
-        ru: "Все репозитории публичны. MIT, Apache-2.0 и GPL-3.0: берите, меняйте, используйте в своей работе.",
-        en: "Every repository is public. MIT, Apache-2.0 and GPL-3.0: take it, change it, use it in your own work.",
-      },
-    },
-    {
-      title: { tk: "Internetsiz", ru: "Офлайн", en: "Offline" },
-      text: {
-        tk: "Programmalaryň hiç biri internet talap etmeýär. Türkmenistanda internet gymmat we haýal — bu tehniki karar hem, garaýyş hem.",
-        ru: "Ни одно из приложений не требует сети. Интернет в Туркменистане дорогой и медленный — это и техническое решение, и позиция.",
-        en: "None of the apps needs a network. Internet in Turkmenistan is expensive and slow — this is a technical choice and a position.",
+        tk: "Ähli repozitoriýalar açyk: MIT, Apache-2.0 we GPL-3.0. Alyp, üýtgedip we öz işiňde ulanyp bolýar.",
+        ru: "Все репозитории публичны: MIT, Apache-2.0 и GPL-3.0. Берите, меняйте, используйте в своей работе.",
+        en: "Every repository is public: MIT, Apache-2.0 and GPL-3.0. Take it, change it, use it in your own work.",
       },
     },
     {
       title: { tk: "Mahabatsyz we tölegsiz", ru: "Без рекламы и платежей", en: "No ads, no fees" },
       text: {
-        tk: "Dükandaky programmalar mugt, mahabatsyz we hiç hili maglumat ýygnamaýar. Gizlinlik syýasatlary aşakda.",
-        ru: "Приложения в магазинах бесплатны, без рекламы и не собирают никаких данных. Политики конфиденциальности — ниже.",
-        en: "The apps in the stores are free, without ads, and collect no data at all. Privacy policies are below.",
+        tk: "Dükandaky programmalar mugt, mahabatsyz we hiç hili maglumat ýygnamaýar.",
+        ru: "Приложения в магазинах бесплатны, без рекламы и не собирают никаких данных.",
+        en: "The apps in the stores are free, have no ads and collect no data at all.",
       },
     },
     {
       title: { tk: "Türkmen dilinde", ru: "На туркменском", en: "In Turkmen" },
       text: {
-        tk: "Interfeýs türkmen dilinde. Kod barlagy türkmen we rus dillerinde geçirilýär — iňlis diliň gowşak bolsa-da päsgel däl.",
-        ru: "Интерфейс на туркменском языке. Ревью кода проходит на туркменском и русском — слабый английский не помеха.",
-        en: "The interface is in Turkmen. Code review is in Turkmen and Russian — weak English is not a blocker.",
+        tk: "Interfeýs türkmen dilinde. Kod barlagy türkmen we rus dillerinde geçirilýär.",
+        ru: "Интерфейс на туркменском языке. Ревью кода — на туркменском и русском.",
+        en: "The interface is in Turkmen. Code review is in Turkmen and Russian.",
+      },
+    },
+    {
+      // Не «все офлайн»: Köpri для части языковых пар ходит в онлайн-сервисы.
+      title: { tk: "Internetsiz hem", ru: "И без интернета", en: "Offline too" },
+      text: {
+        tk: "Programmalaryň köpüsi internetsiz işleýär. Köpri käbir dil jübütleri üçin onlaýn hyzmatlary ulanýar.",
+        ru: "Большинство приложений работают без интернета. Köpri для части языковых пар обращается к онлайн-сервисам.",
+        en: "Most apps work without internet. Köpri uses online services for some language pairs.",
       },
     },
   ] satisfies { title: L; text: L }[],
 };
 
-export const projectsIntro = {
-  label: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
-  paragraphs: [
-    {
-      tk: "Häzir iki ugur bar. Dil öwrediş programmalary — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — we gurallar: Köpri, BluePlayer, Küşt. Hemmesi açyk, hemmesi GitHub-da.",
-      ru: "Сегодня два направления. Приложения для изучения языков — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — и инструменты: Köpri, BluePlayer, Küşt. Всё открыто, всё на GitHub.",
-      en: "There are two lines today. Language learning apps — Ykjam Terjime, Hytaý dili 1, Iňlis dili 1 — and tools: Köpri, BluePlayer, Küşt. All open, all on GitHub.",
-    },
-    {
-      tk: "Esasy ünsümiz dil öwrediş liniýasynda. Hereketlendiriji bir, her täze dil — diňe täze mazmun we täze nyşan, şonuň üçin her indiki programma öňküden çalt çykýar.",
-      ru: "Главный фокус — языковая линейка. Движок общий, каждый новый язык — только новый контент и новый значок, поэтому каждое следующее приложение выходит быстрее предыдущего.",
-      en: "The main focus is the language line. The engine is shared; each new language is only new content and a new icon, so every next app ships faster than the one before.",
-    },
-    {
-      tk: "Öz açyk kodly taslamaň bar bolsa we ony türkmen jemgyýetiniň içinde ösdürmek isleseň — hat ýaz. Repozitoriý guramanyň astyna geçýär, awtorlyk seniňki bolup galýar.",
-      ru: "Если у вас есть проект с открытым кодом и вы хотите развивать его внутри туркменского сообщества — напишите нам. Репозиторий переходит под организацию, авторство остаётся за вами.",
-      en: "If you have an open-source project and want to grow it inside the Turkmen community — write to us. The repository moves under the organization, the authorship stays yours.",
-    },
-  ] satisfies L[],
-  allProjects: { tk: "Ähli taslamalar →", ru: "Все проекты →", en: "All projects →" },
+export const projects = {
+  title: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
+  lead: {
+    tk: "Dil öwrediş programmalary we gurallar. Hemmesi açyk, hemmesi GitHub-da.",
+    ru: "Приложения для изучения языков и инструменты. Всё открыто, всё на GitHub.",
+    en: "Language learning apps and tools. All open, all on GitHub.",
+  },
+  /** Флагман — первый проект из content/projects.ts (Ykjam Terjime). */
+  flagship: { tk: "Esasy taslama", ru: "Флагман", en: "Flagship" },
 };
 
 export const people = {
-  label: { tk: "Adamlar", ru: "Люди", en: "People" },
-  text: {
-    tk: "Şapak Apps — bir adamyň studiýasy däl. Taslamalar dürli awtorlardan gelýär, hemmesi bir guramada we bir düzgün bilen: açyk kod, açyk meseleler, düşnükli dilde barlag.",
-    ru: "Şapak Apps — не студия одного человека. Проекты приходят от разных авторов, все в одной организации и по одним правилам: открытый код, открытые задачи, ревью на понятном языке.",
-    en: "Şapak Apps is not one person's studio. Projects come from different authors, all in one organization and under the same rules: open code, open issues, review in a language you understand.",
+  title: { tk: "Adamlar", ru: "Люди", en: "People" },
+  lead: {
+    tk: "Şapak Apps — bir adamyň studiýasy däl. Taslamalar dürli awtorlardan gelýär.",
+    ru: "Şapak Apps — не студия одного человека. Проекты приходят от разных авторов.",
+    en: "Şapak Apps is not one person's studio. Projects come from different authors.",
   },
 };
 
 export const contribute = {
-  label: { tk: "Goşant goşmak", ru: "Участие", en: "Contributing" },
+  title: {
+    tk: "Ilkinji Pull Request-iňi şu ýerde aç",
+    ru: "Откройте здесь свой первый pull request",
+    en: "Open your first pull request here",
+  },
+  lead: {
+    tk: "Kod barlagy türkmen we rus dillerinde geçirilýär — iňlis diliň gowşak bolsa-da päsgel däl.",
+    ru: "Ревью кода проходит на туркменском и русском — слабый английский не помеха.",
+    en: "Code review is in Turkmen and Russian — weak English is not a blocker.",
+  },
   steps: [
     {
       tk: "Täze gelenler üçin meseleleri aç — olar kiçi we anyk bölünen, ilkinji Pull Request üçin amatly.",
@@ -145,13 +129,10 @@ export const contribute = {
       en: "Open a small pull request — better than one big change.",
     },
   ] satisfies L[],
-  promiseTitle: { tk: "Näme wada berýäris", ru: "Что мы обещаем", en: "What we promise" },
   promises: [
-    { tk: "Kod barlagy türkmen we rus dillerinde geçirilýär.", ru: "Ревью кода проходит на туркменском и русском.", en: "Code review is in Turkmen and Russian." },
     { tk: "Her Pull Request-e birnäçe günüň içinde jogap berilýär.", ru: "На каждый pull request отвечаем в течение нескольких дней.", en: "Every pull request gets an answer within a few days." },
     { tk: "Kabul edilen kod indiki goýberilişe düşýär.", ru: "Принятый код попадает в следующий релиз.", en: "Accepted code ships in the next release." },
   ] satisfies L[],
-  contactTitle: { tk: "Habarlaşmak", ru: "Контакты", en: "Contact" },
   contactNote: {
     tk: "türkmen, rus ýa-da iňlis dilinde ýazyp bolýar.",
     ru: "можно писать на туркменском, русском или английском.",

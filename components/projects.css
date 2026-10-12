@@ -1,83 +1,69 @@
 /* Страница проектов. Общие стили — app/globals.css. */
 /* ---------- заголовок страницы ---------- */
-.page-hero{padding:72px 0 24px}
-.page-hero h1{
-  margin:0; font-size:clamp(34px,4.6vw,58px); font-weight:500;
-  line-height:1.05; letter-spacing:-.03em;
-}
-.page-hero .lead{margin:22px 0 0; color:var(--muted); font-size:19px; max-width:58ch}
+.page-hero{padding:72px 0 0}
+.page-hero .section-title{font-size:clamp(40px,5.4vw,72px)}
 
 /* ---------- группы ---------- */
-.group{padding:56px 0 0}
-.group h2{
-  font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
-  color:var(--muted); font-weight:500; margin:0 0 24px;
-  padding-bottom:14px; border-bottom:1px solid var(--rule);
+.group{padding:80px 0 0}
+.group-title{
+  margin:0 0 24px; font-size:clamp(24px,2.6vw,30px); line-height:1.15;
+  padding-bottom:16px; border-bottom:1px solid var(--rule);
 }
-.projects{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px}
+.projects{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
 
 /* ---------- карточка проекта ---------- */
 .project{
-  border:1px solid var(--rule); border-radius:14px; padding:24px;
-  display:flex; flex-direction:column; gap:18px;
+  background:var(--card); border:1px solid var(--rule); border-radius:20px; padding:24px;
+  display:flex; flex-direction:column; gap:18px; scroll-margin-top:24px;
   transition:border-color .3s ease, transform .3s ease;
 }
-.project:hover{border-color:var(--fg); transform:translateY(-2px)}
+.project:hover{border-color:#4A4A4A; transform:translateY(-2px)}
+/* Карточка, на которую привела иконка с главной (/projects/#id). */
+.project:target{border-color:var(--brand); box-shadow:0 0 0 1px var(--brand)}
 .project .head{display:flex; gap:16px; align-items:center}
-.project .icon{
-  width:64px; height:64px; border-radius:18px; flex:none; display:block;
-  transition:transform .45s cubic-bezier(.2,.8,.2,1);
-}
-.project:hover .icon{transform:scale(1.06) rotate(-2deg)}
-.project h3{margin:0; font-size:20px; font-weight:600; letter-spacing:-.02em}
-.status{
-  display:inline-flex; align-items:center; gap:8px; margin-top:6px;
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
-  text-transform:uppercase; color:var(--muted);
-}
-.status.live{color:var(--accent)}
-.status.live::before{
-  content:""; width:7px; height:7px; border-radius:50%; background:var(--brand);
-  animation:pulse 2.4s ease-out infinite;
-}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,133,27,.45)}
-  70%{box-shadow:0 0 0 9px rgba(255,133,27,0)}
-  100%{box-shadow:0 0 0 0 rgba(255,133,27,0)}
-}
-.project p{margin:0; color:var(--muted); font-size:15.5px; flex:1}
+.project .app-icon{width:72px; height:72px; transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.project:hover .app-icon{transform:scale(1.05) rotate(-2deg)}
+.project h3{margin:0 0 8px; font-size:22px; line-height:1.15}
+.project p{margin:0; color:var(--soft); font-size:15.5px; flex:1}
 .nums{display:flex; flex-wrap:wrap; gap:8px}
 .nums span{
-  font-family:var(--mono); font-size:11.5px; letter-spacing:.04em;
-  padding:5px 9px; border-radius:6px; background:var(--accent-soft);
+  font-family:var(--mono); font-size:12px; letter-spacing:.03em; color:var(--soft);
+  padding:4px 10px; border-radius:999px; border:1px solid var(--rule);
 }
-.facts{font-family:var(--mono); font-size:11.5px; color:var(--muted); letter-spacing:.02em; line-height:1.9}
+.facts{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:.02em; line-height:1.9}
 .facts a{text-decoration:none; border-bottom:1px solid var(--rule)}
 .facts a:hover{color:var(--fg)}
 .links{
-  display:flex; gap:18px; flex-wrap:wrap; font-size:14.5px;
-  padding-top:16px; border-top:1px solid var(--rule);
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  padding-top:18px; border-top:1px solid var(--rule);
 }
-.links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
-.links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
+.btn.sm{font-size:14.5px; padding:10px 14px; border-radius:10px}
+.star{margin-left:auto; font-size:14px; color:var(--soft); text-decoration:none; padding:4px 0}
+.star:hover{color:var(--brand)}
 .star .n{color:var(--fg); font-weight:600}
 .star .n:empty{display:none}
 .star .n::after{content:" · "; font-weight:400; color:var(--muted)}
 
 /* ---------- завершение ---------- */
-.after{padding:64px 0 0}
-.after p{margin:0; font-size:16.5px; max-width:60ch}
+.after{
+  margin:96px 0 0; padding:40px; border-radius:24px;
+  border:1px solid #FF851B55; background:linear-gradient(160deg,#22160A 0%,var(--card) 55%);
+}
+.after p{margin:0; font-size:18px; max-width:60ch; color:var(--soft)}
+.after .ctas{margin-top:28px}
 
 @media (prefers-reduced-motion:reduce){
-  .status.live::before{animation:none}
-  .project,.project .icon{transition:none}
-  .project:hover,.project:hover .icon{transform:none}
+  .project,.project .app-icon{transition:none}
+  .project:hover,.project:hover .app-icon{transform:none}
 }
 @media (max-width:960px){ .projects{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:640px){ .projects{grid-template-columns:1fr} }
 @media (max-width:640px){
-  .page-hero{padding:48px 0 16px}
-  .page-hero .lead{font-size:17px}
-  .group{padding-top:44px}
-  .project{padding:22px}
+  .projects{grid-template-columns:1fr; gap:12px}
+  .page-hero{padding-top:40px}
+  .group{padding-top:56px}
+  .project{padding:20px}
+  .project .app-icon{width:64px; height:64px}
+  .after{margin-top:72px; padding:24px; border-radius:20px}
+  .after p{font-size:16.5px}
+  .after .ctas{flex-direction:column}
 }

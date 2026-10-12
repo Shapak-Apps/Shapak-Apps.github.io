@@ -1,12 +1,15 @@
 import type { L } from "@/lib/i18n";
 
 export type Project = {
+  /** Якорь карточки на /projects/ — на него ведут иконки с главной. */
+  id: string;
   name: string;
   /** Иконка из public/assets/. */
   icon: string;
   /** Репозиторий в Shapak-Apps — ссылка на GitHub и счётчик звёзд. */
   repo: string;
-  status: { live: boolean; text: L };
+  /** short — подпись под иконкой на главной, если text длинный. */
+  status: { live: boolean; text: L; short?: L };
   text: L;
   /** Плашки: строка одинакова на всех языках, L — переводится. */
   nums: (string | L)[];
@@ -49,6 +52,7 @@ export const groups: { title: L; projects: Project[] }[] = [
     title: { tk: "Dil öwrenmek", ru: "Изучение языков", en: "Language learning" },
     projects: [
       {
+        id: "ykjam-terjime",
         name: "Ykjam Terjime",
         icon: "/assets/ykjam-terjime.png",
         repo: "turkmen-phrasebook",
@@ -69,12 +73,14 @@ export const groups: { title: L; projects: Project[] }[] = [
         ],
       },
       {
+        id: "hytay-dili-1",
         name: "Hytaý dili 1",
         icon: "/assets/hytay-dili-1.png",
         repo: "turkmen-chinese",
         status: {
           live: true,
           text: { tk: "App Store-da · Google Play ýakynda", ru: "В App Store · скоро в Google Play", en: "On the App Store · Google Play soon" },
+          short: { tk: "App Store-da", ru: "В App Store", en: "On the App Store" },
         },
         text: {
           tk: "Türkmen dilinden hytaý dili. Her bapda teoriýa, gönükmeler we synag; indiki bap synagdan soň açylýar. Doly oflaýn.",
@@ -87,6 +93,7 @@ export const groups: { title: L; projects: Project[] }[] = [
         links: [{ label: "App Store", href: "https://apps.apple.com/app/id6801010061" }],
       },
       {
+        id: "inlis-dili-1",
         name: "Iňlis dili 1",
         icon: "/assets/inlis-dili-1.png",
         repo: "turkmen-english",
@@ -106,6 +113,7 @@ export const groups: { title: L; projects: Project[] }[] = [
     title: { tk: "Gurallar", ru: "Инструменты", en: "Tools" },
     projects: [
       {
+        id: "kopri",
         name: "Köpri",
         icon: "/assets/kopri.png",
         repo: "K-pri-App-for-phone",
@@ -120,6 +128,7 @@ export const groups: { title: L; projects: Project[] }[] = [
         author: "aynazar-sylyyew-dev",
       },
       {
+        id: "blueplayer",
         name: "BluePlayer",
         icon: "/assets/blueplayer.png",
         repo: "BluePlayer",
@@ -134,14 +143,15 @@ export const groups: { title: L; projects: Project[] }[] = [
         author: "aynazar-sylyyew-dev",
       },
       {
+        id: "kust",
         name: "Küşt",
         icon: "/assets/kust.png",
         repo: "kust",
         status: { live: false, text: IN_DEVELOPMENT },
         text: {
-          tk: "Küşt öwrenmek, türgenleşmek we oýnamak üçin programma. Stockfish botlaryna garşy oýun, oýundan soň derňew: her göçüm bahalandyrylýar we düşündirilýär.",
-          ru: "Шахматное приложение: учиться, тренироваться, играть. Партии против ботов на Stockfish и разбор после игры: каждый ход оценивается и объясняется.",
-          en: "A chess app to learn, practice and play. Games against Stockfish bots, and post-game analysis: every move is classified and explained.",
+          tk: "Küşt öwrenmek, türgenleşmek we oýnamak üçin programma. Stockfish botlaryna garşy ýa-da ikiçäk oýun, wagt kontroly, maslahatlar we göçümi yzyna almak, reýting.",
+          ru: "Шахматное приложение: учиться, тренироваться, играть. Партии против ботов на Stockfish и вдвоём, контроль времени, подсказки и отмена хода, рейтинг.",
+          en: "A chess app to learn, practice and play. Games against Stockfish bots or with a friend, time control, hints and undo, rating.",
         },
         nums: ["Stockfish", "GPL-3.0"],
         stack: "Flutter · Dart",
@@ -158,3 +168,6 @@ export const after = {
     en: "If you have an open-source project and want to grow it inside the Turkmen community — write to us. The repository moves under the organization, the authorship stays yours.",
   },
 };
+
+/** Все проекты подряд — для ряда иконок на главной. */
+export const allProjects: Project[] = groups.flatMap((g) => g.projects);

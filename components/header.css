@@ -2,17 +2,23 @@
 
 .masthead{
   display:flex; align-items:center; justify-content:space-between;
-  gap:20px; padding:34px 0 0;
+  gap:20px; padding:24px 0 0;
 }
 
-.masthead-left{ display:flex; align-items:center; gap:40px; min-width:0; }
+/* Знак слева, разделы прижаты вправо — к переключателю языка. */
+.masthead-left{ display:flex; align-items:center; gap:40px; min-width:0; flex:1; }
 
-.masthead-nav{ display:flex; align-items:center; gap:28px; font-size:14.5px; }
-.masthead-nav a{ text-decoration:none; color:var(--muted); white-space:nowrap; }
+.masthead-nav{ display:flex; align-items:center; gap:28px; font-size:15px; }
+.masthead-nav a{ text-decoration:none; color:var(--soft); white-space:nowrap; }
 .masthead-nav a:hover,
 .masthead-nav a[aria-current="page"]{ color:var(--fg); }
 
 .masthead-right{ display:flex; align-items:center; gap:10px; flex:none; }
+
+/* Знак в шапке чуть левее края контента; на телефоне поле узкое — не сдвигаем. */
+@media (min-width:641px){
+  .masthead .brand{ margin-left:-24px; }
+}
 
 /* <summary> — кнопка меню: без стандартного треугольника-маркера. */
 .masthead summary{ list-style:none; cursor:pointer; }
@@ -34,8 +40,8 @@
   position:absolute; top:calc(100% + 8px); right:0; z-index:50;
   display:flex; flex-direction:column; gap:3px; padding:8px;
   min-width:170px;
-  background:var(--bg); border:1px solid var(--rule); border-radius:14px;
-  box-shadow:0 14px 32px -14px rgba(0,0,0,.28);
+  background:var(--card-hi); border:1px solid var(--rule); border-radius:14px;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.9);
   transition:opacity .18s ease, transform .18s ease;
 }
 /* Плавное появление; закрывается мгновенно. */
@@ -49,7 +55,7 @@
   font-family:var(--mono); font-size:13px; font-weight:600; color:var(--muted);
   white-space:nowrap;
 }
-.flag-icon{ width:20px; height:15px; border-radius:2px; object-fit:cover; flex:none; box-shadow:0 0 0 1px rgba(0,0,0,.12); }
+.flag-icon{ width:20px; height:15px; border-radius:2px; object-fit:cover; flex:none; box-shadow:0 0 0 1px rgba(255,255,255,.14); }
 .langswitch-pill:hover{ border-color:var(--rule); color:var(--fg); }
 .langswitch-pill[aria-current="true"]{
   background:var(--fg); border-color:var(--fg); color:var(--bg);
@@ -79,7 +85,7 @@
 .mobile-menu[open] .bars span:nth-child(3){ top:5px; transform:rotate(-45deg); }
 
 .mobile-backdrop{
-  position:fixed; inset:0; z-index:70; background:rgba(10,8,4,.45);
+  position:fixed; inset:0; z-index:70; background:rgba(0,0,0,.72);
   transition:opacity .3s ease;
 }
 .mobile-panel{
@@ -94,12 +100,12 @@
 }
 
 .mobile-panel-top{ margin-bottom:32px; }
-.mobile-panel-top img{ height:32px; width:auto; display:block; border-radius:3px; }
+.mobile-panel-top img{ height:30px; width:auto; display:block; }
 
 .mobile-nav{ display:flex; flex-direction:column; gap:2px; }
 .mobile-nav a{
   padding:13px 8px; border-radius:10px; text-decoration:none;
-  font-size:16px; color:var(--fg); font-weight:600;
+  font-family:var(--display); font-size:18px; color:var(--fg); font-weight:700;
 }
 .mobile-nav a:hover{ background:var(--accent-soft); }
 

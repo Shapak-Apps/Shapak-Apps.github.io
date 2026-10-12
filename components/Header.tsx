@@ -55,8 +55,8 @@ export function Header({ lang, page }: { lang: Lang; page: Page }) {
     <header className="masthead">
       <div className="masthead-left">
         <Link className="brand" href={home}>
-          {/* SVG сам переключается между светлой и тёмной версией. */}
-          <img src="/logo.svg" alt="şapak" width={788} height={204} />
+          {/* Тёмная версия знака: сайт всегда тёмный. */}
+          <img src="/logo-dark-sm.png" alt="şapak" width={340} height={88} />
         </Link>
         <nav className="masthead-nav" aria-label={nav.sections[lang]}>
           {sectionLinks}
@@ -91,7 +91,7 @@ export function Header({ lang, page }: { lang: Lang; page: Page }) {
           <div className="mobile-backdrop" aria-hidden="true" />
           <div className="mobile-panel">
             <div className="mobile-panel-top">
-              <img src="/logo.svg" alt="şapak" width={788} height={204} />
+              <img src="/logo-dark-sm.png" alt="şapak" width={340} height={88} />
             </div>
             <nav className="mobile-nav" aria-label={nav.sections[lang]}>
               {sectionLinks}

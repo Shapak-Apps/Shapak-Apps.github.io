@@ -1,15 +1,16 @@
 /* Şapak Apps — общие стили всех страниц. Стили конкретной страницы — в components/<page>.css. */
+/* Сайт всегда тёмный, как баннер организации: светлой темы нет. */
 :root{
-  --bg:#FBFAF8; --fg:#17150F; --muted:#6E675B; --rule:#E3DFD6;
+  --bg:#000; --fg:#FFF; --soft:#D9D5CD; --muted:#99938A; --rule:#262626;
+  --card:#0F0F0F; --card-hi:#161616;
   --brand:#FF851B;
-  --accent:#B25A0C;
+  --accent:#FF851B;
   --accent-soft:#FF851B1F;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  /* --font-display задаёт lib/fonts.ts (Fira Sans Bold). */
+  --display:var(--font-display),var(--sans);
   --mono:ui-monospace,"Cascadia Mono","SF Mono",Consolas,monospace;
-}
-@media (prefers-color-scheme:dark){
-  :root{ --bg:#131210; --fg:#EDEAE3; --muted:#948C7E; --rule:#282621;
-         --accent:#FF9D4D; --accent-soft:#FF851B26; }
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; scroll-padding-top:28px}
@@ -21,52 +22,73 @@ body{
 }
 a{color:inherit}
 img{max-width:100%}
+h1,h2,h3{font-family:var(--display); font-weight:700}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
-.wrap{max-width:1120px; margin:0 auto; padding:0 48px 80px}
+.wrap{max-width:1180px; margin:0 auto; padding:0 48px 64px}
 
 /* ---------- шапка ---------- */
 /* .masthead/.nav/.langsel переехали в components/header.css — теперь это стили только Header.tsx. */
 .brand{display:block; text-decoration:none; line-height:0; margin-right:auto}
-.brand img{height:44px; width:auto; display:block; border-radius:3px}
+.brand img{height:32px; width:auto; display:block}
 
 /* ---------- общие блоки ---------- */
 .eyebrow{
-  font-family:var(--mono); font-size:11px; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--accent); margin:0 0 22px;
+  font-family:var(--mono); font-size:12px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 18px;
 }
-section{padding:72px 0 0}
-.label{
-  font-family:var(--mono); font-size:11px; text-transform:uppercase;
-  letter-spacing:.15em; color:var(--muted);
-  margin:0 0 28px; padding-bottom:14px; border-bottom:1px solid var(--rule);
+section{padding:120px 0 0}
+/* Заголовок секции с оранжевой точкой — как в знаке «şapak.». */
+.section-title{
+  margin:0; font-size:clamp(32px,4vw,48px); line-height:1.05; letter-spacing:-.01em; text-wrap:balance;
 }
-.prose{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px 40px}
-.prose.two{grid-template-columns:repeat(2,minmax(0,1fr)); max-width:880px}
-.prose p{margin:0; font-size:16.5px}
+.section-title::after{content:"."; color:var(--brand)}
+.section-lead{margin:16px 0 0; color:var(--soft); font-size:18px; max-width:60ch; text-wrap:pretty}
 
-.ctas{margin:36px 0 0; display:flex; gap:30px; flex-wrap:wrap}
-.cta{
-  display:inline-block; font-size:16px; text-decoration:none;
-  border-bottom:1px solid var(--accent); color:var(--accent); padding-bottom:2px;
+/* кнопки */
+.ctas{margin:36px 0 0; display:flex; gap:12px; flex-wrap:wrap}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--display); font-weight:700; font-size:17px; line-height:1;
+  padding:15px 22px; border-radius:12px; text-decoration:none; white-space:nowrap;
+  border:1.5px solid transparent;
+  transition:background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
 }
-.cta.quiet{color:inherit; border-bottom-color:var(--rule)}
-.cta.quiet:hover{color:var(--accent); border-bottom-color:var(--accent)}
+.btn.primary{background:var(--brand); color:#000}
+.btn.primary:hover{background:#FF9A40}
+.btn.ghost{border-color:#3A3A3A; color:var(--fg)}
+.btn.ghost:hover{border-color:var(--fg)}
+.btn:active{transform:translateY(1px)}
+
+/* статус проекта: «в магазинах» — оранжевый, «в разработке» — серый */
+.st{
+  display:inline-flex; align-items:center; gap:6px; font-size:12.5px; line-height:1;
+  padding:5px 9px; border-radius:999px; white-space:nowrap;
+  color:var(--muted); background:#FFFFFF0D;
+}
+.st::before{content:""; width:6px; height:6px; border-radius:50%; background:currentColor; flex:none}
+.st.live{color:var(--brand); background:var(--accent-soft)}
+
+/* иконка приложения */
+.app-icon{display:block; border-radius:22.5%; flex:none}
 
 /* ---------- подвал ---------- */
-footer{margin:88px 0 0; border-top:1px solid var(--rule); padding:24px 0 0}
+footer{margin:120px 0 0; border-top:1px solid var(--rule); padding:28px 0 0;
+  display:flex; align-items:center; gap:18px 40px; flex-wrap:wrap}
+footer .brand{margin-right:0}
+footer .brand img{height:26px}
 .meta{
   font-family:var(--mono); font-size:12.5px; color:var(--muted);
-  display:flex; gap:10px 32px; flex-wrap:wrap;
+  display:flex; gap:10px 28px; flex-wrap:wrap;
 }
 .meta a{text-decoration:none; border-bottom:1px solid var(--rule)}
-.meta a:hover{color:var(--fg)}
+.meta a:hover{color:var(--fg); border-bottom-color:var(--fg)}
 
-@media (max-width:860px){
-  .prose{grid-template-columns:1fr}
-}
 @media (max-width:640px){
-  .wrap{padding:0 22px 64px}
-  section{padding-top:56px}
+  .wrap{padding:0 16px 48px}
+  section{padding-top:88px}
+  .section-lead{font-size:16.5px}
+  .btn{font-size:16px; padding:14px 18px}
+  footer{margin-top:88px}
 }
 /* ---------- появление при прокрутке (RevealOnScroll) ---------- */
 /* body .reveal — специфичность 11, побеждает .project (10) и гарантирует работу на /projects/ */
@@ -81,8 +103,8 @@ body .reveal.pending {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal.pending {
+  body .reveal,
+  body .reveal.pending {
     opacity: 1;
     transform: none;
     transition: none;

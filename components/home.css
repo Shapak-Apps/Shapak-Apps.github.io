@@ -1,68 +1,210 @@
 /* Главная. Общие стили — app/globals.css. */
+/* ---------- первый экран: как баннер организации ---------- */
+/* Шапка лежит поверх hero, а hero — на весь экран (.screen): первый экран — только он,
+   «Maksadymyz» начинается ровно со второго экрана на любом мониторе. */
+.home{position:relative}
+.home .masthead{position:absolute; top:0; left:48px; right:48px; z-index:10}
+.hero.screen{position:relative; text-align:center; padding:96px 0 88px}
+.hero h1{margin:0; font-size:clamp(38px,6.4vw,88px); line-height:1.05; letter-spacing:-.01em}
+.hero-rule{display:block; width:120px; height:4px; background:var(--brand); margin:32px auto 0}
+.hero .lead{margin:28px auto 0; max-width:660px; color:var(--soft); font-size:20px}
+
+/* стрелка «листай» внизу первого экрана */
+.scroll-cue{
+  position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
+  width:44px; height:44px; border-radius:50%; border:1px solid var(--rule);
+  display:grid; place-items:center; color:var(--muted); text-decoration:none;
+  transition:color .2s ease, border-color .2s ease;
+}
+.scroll-cue svg{width:20px; height:20px}
+.scroll-cue:hover{color:var(--fg); border-color:var(--fg)}
+@media (prefers-reduced-motion:no-preference){
+  .scroll-cue svg{animation:cue 2.2s ease-in-out infinite}
+}
+@keyframes cue{
+  0%,100%{transform:translateY(-2px)}
+  50%{transform:translateY(4px)}
+}
+
+
+/* ---------- секции после hero: каждая — минимум на весь экран, содержимое по центру ---------- */
+/* svh — высота экрана при видимой адресной строке телефона; vh — для старых браузеров. */
+.screen{
+  min-height:100vh; min-height:100svh; padding:72px 0;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.home footer{margin-top:0}
+
+/* Плавный переход между секциями. Мышь и тачпад — SmoothSections.tsx (Lenis, мягкая доводка ~1 с).
+   Тач-экраны — родное прилипание прокрутки ниже. Только на главной — через :has, потому что при
+   переходе по ссылке на /projects/ этот CSS остаётся в документе.
+   scroll-padding обнуляем, иначе секция встаёт на 28 px ниже верха экрана. */
+html:has(.home){scroll-padding-top:0}
+@media (pointer:coarse) and (prefers-reduced-motion:no-preference){
+  html:has(.home){scroll-snap-type:y mandatory}
+}
+.home .masthead, .home .screen{scroll-snap-align:start}
+.home footer{scroll-snap-align:end}
+
 /* ---------- заявление ---------- */
-.hero{padding:84px 0 60px}
-.hero h1{
-  margin:0; font-size:clamp(34px,4.6vw,58px); font-weight:500;
-  line-height:1.05; letter-spacing:-.03em; max-width:22ch;
+.statement{
+  margin:0; max-width:980px;
+  font-family:var(--display); font-weight:700; font-size:clamp(28px,3.6vw,46px);
+  line-height:1.15; letter-spacing:-.01em; color:var(--muted); text-wrap:pretty;
 }
-.hero .lead{margin:28px 0 0; color:var(--muted); font-size:19px; max-width:58ch}
+.statement strong{color:var(--fg); font-weight:inherit}
 
-.stats{
-  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px 32px;
-  margin:56px 0 0; padding:32px 0 0; border-top:1px solid var(--rule);
-}
-.stat{text-decoration:none; display:block}
-.stat b.lic{font-size:24px; padding-top:8px}
-.stat b{display:block; font-size:34px; font-weight:500; letter-spacing:-.03em; line-height:1}
-.stat small{
-  display:block; margin-top:10px; font-family:var(--mono); font-size:11px;
-  letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
-}
-a.stat:hover b{color:var(--accent)}
+/* ---------- принципы: плитки 2×2 ---------- */
+.principles{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:40px 0 0}
+.principle{background:var(--card); border:1px solid var(--rule); border-radius:20px; padding:32px}
+.principle .num{font-family:var(--mono); font-size:13px; letter-spacing:.1em; color:var(--brand)}
+.principle h3{margin:18px 0 0; font-size:26px; line-height:1.15}
+.principle p{margin:10px 0 0; color:var(--soft); font-size:16px; max-width:46ch}
 
-/* ---------- принципы ---------- */
-.principles{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px}
-.principle{border-top:2px solid var(--fg); padding-top:14px}
-.principle h3{margin:0; font-size:17px; font-weight:600; letter-spacing:-.01em}
-.principle p{margin:10px 0 0; color:var(--muted); font-size:15px}
+/* ---------- проекты: ряд иконок, каждая ведёт к карточке на /projects/ ---------- */
+.app-row{
+  list-style:none; margin:44px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:20px;
+}
+.app-row a{
+  display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center;
+  text-decoration:none; padding:8px 4px; border-radius:16px;
+}
+.app-row .app-icon{width:88px; height:88px; transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.app-row a:hover .app-icon{transform:translateY(-4px)}
+.app-row b{font-family:var(--display); font-size:16px; line-height:1.2}
+#projects .ctas{margin-top:44px}
+
+/* ---------- флагман (сейчас не на странице — убран «пока что») ---------- */
+.flagship{
+  margin:40px 0 0; padding:40px; border-radius:24px;
+  display:grid; grid-template-columns:140px minmax(0,1fr); gap:40px; align-items:start;
+  border:1px solid #FF851B55; background:linear-gradient(160deg,#22160A 0%,var(--card) 55%);
+}
+.flagship .app-icon{width:140px; height:140px}
+.flagship .eyebrow{margin:0 0 10px}
+.flagship h3{margin:0; font-size:clamp(30px,3.4vw,44px); line-height:1.05}
+.flagship .st{margin-top:12px}
+.flagship .text{margin:18px 0 0; color:var(--soft); font-size:17px; max-width:56ch}
+.flagship .ctas{margin-top:28px}
+#projects > .ctas{margin-top:20px}
 
 /* ---------- люди ---------- */
-.members{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:44px 40px; margin:44px 0 0}
-.member{border-top:2px solid var(--fg); padding-top:24px}
-.member .who{display:flex; flex-direction:column; align-items:flex-start; gap:18px}
-.member img{width:84px; height:84px; border-radius:50%; background:var(--rule); display:block; flex:none}
-.member h3{margin:0; font-size:20px; font-weight:600; letter-spacing:-.015em}
-.member .role{margin:6px 0 0; color:var(--muted); font-size:15.5px; line-height:1.45}
-.member .links{margin:18px 0 0; display:flex; gap:16px; flex-wrap:wrap; font-size:14.5px}
-.member .links a{text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px}
-.member .links a:hover{border-bottom-color:var(--accent); color:var(--accent)}
-
-/* ---------- участие ---------- */
-.steps{margin:0; padding:0; list-style:none; counter-reset:s; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px 40px}
-.steps li{counter-increment:s; border-top:1px solid var(--rule); padding-top:14px; font-size:16px}
-.steps li::before{
-  content:counter(s,decimal-leading-zero); display:block; font-family:var(--mono);
-  font-size:11px; color:var(--accent); letter-spacing:.12em; margin-bottom:10px;
+.members{
+  list-style:none; margin:40px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px;
 }
-.promise{margin:44px 0 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 40px; align-items:start}
-.promise h3{margin:0 0 8px; font-size:17px; font-weight:600}
-.promise ul{margin:0; padding:0; list-style:none}
-.promise li{padding:10px 0; border-top:1px solid var(--rule); font-size:16px}
-.promise p{margin:0; font-size:16px}
+.member{
+  background:var(--card); border:1px solid var(--rule); border-radius:20px;
+  padding:24px 20px; display:flex; flex-direction:column; gap:16px;
+}
+.member img{width:80px; height:80px; border-radius:50%; background:var(--card-hi); display:block; flex:none}
+.member h3{margin:0; font-size:18px; line-height:1.2}
+.member .role{margin:6px 0 0; color:var(--muted); font-size:14px; line-height:1.45}
+.member .links{margin:12px 0 0; display:flex; gap:14px; flex-wrap:wrap; font-size:14px}
+.member .links a{text-decoration:none; color:var(--soft); border-bottom:1px solid var(--rule)}
+.member .links a:hover{color:var(--brand); border-bottom-color:var(--brand)}
 
-@media (max-width:960px){
-  .principles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .members{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* ---------- участие: оранжевая полоса ---------- */
+.band{
+  background:var(--brand); color:#000; border-radius:28px; padding:56px;
+  display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:40px 56px;
+}
+.band :focus-visible{outline-color:#000}
+.band .section-title::after{color:#000}
+.band-head p{margin:16px 0 0; font-size:18px; max-width:44ch}
+.band .ctas{margin-top:28px}
+.btn.on-brand{background:#000; color:#FFF}
+.btn.on-brand:hover{background:#1F1F1F}
+
+.steps{list-style:none; margin:0; padding:0; counter-reset:s}
+.steps li{
+  counter-increment:s; display:grid; grid-template-columns:48px minmax(0,1fr); gap:8px;
+  padding:18px 0; border-top:1.5px solid #00000033; font-size:17px; line-height:1.45;
+}
+.steps li:first-child{border-top:0; padding-top:6px}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);
+  font-family:var(--display); font-weight:700; font-size:22px; line-height:1.1;
+}
+.band-foot{
+  grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 40px;
+  padding-top:24px; border-top:1.5px solid #00000033; font-size:15px;
+}
+.band-foot ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px 28px}
+.band-foot li::before{content:"✓\00a0"; font-weight:700}
+.band-foot p{margin:0}
+.band-foot a{color:#000; font-weight:600}
+
+@media (prefers-reduced-motion:reduce){
+  .app-row .app-icon{transition:none}
+  .app-row a:hover .app-icon{transform:none}
+}
+@media (max-width:1020px){
+  .members{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .band{grid-template-columns:1fr}
 }
 @media (max-width:860px){
-  .steps{grid-template-columns:1fr}
-  .promise{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .app-row{grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px 8px}
 }
 @media (max-width:640px){
-  .hero{padding:52px 0 48px}
-  .hero .lead{font-size:17px}
-  .principles{grid-template-columns:1fr}
-  .members{grid-template-columns:1fr}
-  .stat b{font-size:28px}
+  .home .masthead{left:16px; right:16px}
+  .hero.screen{padding:84px 0 80px}
+  .hero-rule{width:84px; margin-top:22px}
+  .hero .lead{font-size:16.5px; margin-top:20px}
+  .scroll-cue{bottom:20px}
+  .app-row{gap:14px 6px; margin-top:32px}
+  .app-row .app-icon{width:72px; height:72px}
+  .app-row b{font-size:14px}
+  #projects .ctas{flex-direction:column; margin-top:30px}
+
+  /* На телефоне каждая секция тоже должна влезать в один экран — всё компактнее. */
+  .screen{padding:32px 0}
+  .screen .section-lead{margin-top:10px; font-size:15.5px}
+
+  /* принципы: номер в одной строке с заголовком */
+  .principles{grid-template-columns:1fr; gap:8px; margin-top:20px}
+  .principle{
+    padding:14px 16px; border-radius:16px;
+    display:grid; grid-template-columns:auto minmax(0,1fr); column-gap:10px; align-items:baseline;
+  }
+  .principle .num{font-size:12px}
+  .principle h3{margin:0; font-size:18px}
+  .principle p{grid-column:1 / -1; margin-top:6px; font-size:14.5px; line-height:1.45}
+
+  .flagship{grid-template-columns:1fr; gap:20px; padding:24px; border-radius:20px}
+  .flagship .app-icon{width:96px; height:96px}
+  .flagship .ctas .btn{flex:1}
+
+  /* люди: строки; ссылки справа от имени, роль под ними */
+  .members{grid-template-columns:1fr; gap:8px; margin-top:20px}
+  .member{flex-direction:row; align-items:center; gap:12px; padding:10px 12px; border-radius:16px}
+  .member img{width:48px; height:48px}
+  .member > div{
+    flex:1; min-width:0;
+    display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:10px; align-items:baseline;
+  }
+  .member h3{grid-column:1; grid-row:1; font-size:16px}
+  .member .links{grid-column:2; grid-row:1; margin:0; gap:10px; font-size:13px}
+  .member .role{grid-column:1 / -1; grid-row:2; margin-top:2px; font-size:13px; line-height:1.35}
+
+  .band{padding:22px 18px; border-radius:20px; gap:16px}
+  .band .section-title{font-size:26px}
+  .band-head p{font-size:15px; margin-top:10px}
+  .band .ctas{margin-top:16px}
+  .steps li{grid-template-columns:32px minmax(0,1fr); padding:10px 0; font-size:14.5px; line-height:1.4}
+  .steps li:first-child{padding-top:0}
+  .steps li::before{font-size:17px}
+  .band-foot{padding-top:14px; gap:6px; font-size:13.5px}
+  .band-foot ul{gap:4px 16px}
+}
+/* Низкие экраны телефонов (360×640 и т. п.): полоса «первый PR» — ещё плотнее, чтобы влезть в экран. */
+@media (max-width:640px) and (max-height:700px){
+  .screen{padding:20px 0}
+  .band{padding:18px 16px; gap:12px}
+  .band .section-title{font-size:23px}
+  .band-head p{font-size:14px}
+  .band .ctas{margin-top:12px}
+  .steps li{padding:7px 0; font-size:13.5px}
+  .band-foot{padding-top:10px; font-size:12.5px}
 }

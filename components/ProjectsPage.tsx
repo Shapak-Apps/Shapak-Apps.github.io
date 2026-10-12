@@ -28,12 +28,12 @@ function ProjectCard({ project: p, lang, index }: { project: Project; lang: Lang
   const repoUrl = `https://github.com/Shapak-Apps/${p.repo}`;
   const delay = DELAYS[index % DELAYS.length];
   return (
-    <article className="project reveal" style={delay ? ({ "--d": delay } as CSSProperties) : undefined}>
+    <article id={p.id} className="project reveal" style={delay ? ({ "--d": delay } as CSSProperties) : undefined}>
       <div className="head">
-        <img className="icon" src={p.icon} alt="" width={160} height={160} />
+        <img className="app-icon" src={p.icon} alt="" width={160} height={160} />
         <div>
           <h3>{p.name}</h3>
-          <span className={p.status.live ? "status live" : "status"}>{p.status.text[lang]}</span>
+          <span className={p.status.live ? "st live" : "st"}>{p.status.text[lang]}</span>
         </div>
       </div>
       <p>{p.text[lang]}</p>
@@ -48,12 +48,12 @@ function ProjectCard({ project: p, lang, index }: { project: Project; lang: Lang
         <a href={`https://github.com/${p.author}`}>@{p.author}</a>
       </div>
       <div className="links">
-        {p.links?.map((l) => (
-          <a key={l.href} href={l.href}>
+        {p.links?.map((l, i) => (
+          <a key={l.href} className={i === 0 ? "btn sm primary" : "btn sm ghost"} href={l.href}>
             {l.label}
           </a>
         ))}
-        <a href={repoUrl}>GitHub</a>
+        <a className="btn sm ghost" href={repoUrl}>GitHub</a>
         <a className="star" href={repoUrl}>
           <StarCount repo={`Shapak-Apps/${p.repo}`} />
           {giveStar[lang]}
@@ -71,13 +71,13 @@ export function ProjectsPage({ lang }: { lang: Lang }) {
       <main>
         <div className="page-hero">
           <p className="eyebrow">{hero.eyebrow}</p>
-          <h1>{hero.title[lang]}</h1>
-          <p className="lead">{hero.lead[lang]}</p>
+          <h1 className="section-title">{hero.title[lang]}</h1>
+          <p className="section-lead">{hero.lead[lang]}</p>
         </div>
 
         {groups.map((g) => (
           <section key={g.title.en} className="group">
-            <h2>{g.title[lang]}</h2>
+            <h2 className="group-title">{g.title[lang]}</h2>
             <div className="projects">
               {g.projects.map((p, i) => (
                 <ProjectCard key={p.repo} project={p} lang={lang} index={i} />
@@ -86,13 +86,13 @@ export function ProjectsPage({ lang }: { lang: Lang }) {
           </section>
         ))}
 
-        <div className="after">
+        <div className="after reveal">
           <p>{after.text[lang]}</p>
           <div className="ctas">
-            <a className="cta" href={`mailto:${EMAIL}`}>
+            <a className="btn primary" href={`mailto:${EMAIL}`}>
               {EMAIL}
             </a>
-            <a className="cta quiet" href={NEWCOMER_ISSUES_URL}>
+            <a className="btn ghost" href={NEWCOMER_ISSUES_URL}>
               {contribute.newcomerIssues[lang]}
             </a>
           </div>
