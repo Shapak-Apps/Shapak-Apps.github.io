@@ -39,7 +39,8 @@ jobs:
       - name: Check pages the stores depend on
         run: |
           for f in index.html ru/index.html en/index.html projects/index.html 404.html \
-                   hytay-dili-1/privacy-policy.html sitemap.xml robots.txt; do
+                   hytay-dili-1/privacy-policy.html blueplayer/privacy-policy.html \
+                   sitemap.xml robots.txt; do
             test -s "out/$f" || { echo "::error::out/$f is missing"; exit 1; }
           done
 

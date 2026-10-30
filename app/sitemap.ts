@@ -19,6 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     })),
   );
-  // Политика Hytaý dili 1 — единственная, что лежит в этом репозитории.
-  return [...pages, { url: abs(PRIVACY_URLS.hytay) }];
+  // Политики, которые лежат в этом репозитории (Ykjam Terjime отдаёт свой репозиторий).
+  return [...pages, { url: abs(PRIVACY_URLS.hytay) }, { url: abs(PRIVACY_URLS.blueplayer) }];
 }

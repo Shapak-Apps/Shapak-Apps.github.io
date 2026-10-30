@@ -40,4 +40,6 @@ export const PRIVACY_URLS = {
   ykjam: "/ykjam-terjime/privacy-policy.html",
   // Лежит в public/hytay-dili-1/.
   hytay: "/hytay-dili-1/privacy-policy.html",
+  // Лежит в public/blueplayer/.
+  blueplayer: "/blueplayer/privacy-policy.html",
 };
