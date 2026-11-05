@@ -4,7 +4,7 @@ import { SITE_URL, localePath, type Lang } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import { EMAIL, NEWCOMER_ISSUES_URL, ORG_URL, orgOnGitHub } from "@/content/site";
 import { members } from "@/content/people";
-import { allProjects } from "@/content/projects";
+import { allProjects, upcoming } from "@/content/projects";
 import { contribute, hero, meta, mission, people, principles, projects } from "@/content/home";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -89,6 +89,21 @@ export function HomePage({ lang }: { lang: Lang }) {
               </li>
             ))}
           </ul>
+          {/* Следующие языки: мелкий ряд без подписей — имя в alt и title, клик ведёт к плитке на /projects/. */}
+          <div className="next-langs reveal">
+            <p className="next-label">
+              {upcoming.title[lang]} · <span>{upcoming.status[lang]}</span>
+            </p>
+            <ul className="lang-row">
+              {upcoming.items.map((u) => (
+                <li key={u.id}>
+                  <a href={`${projectsHref}#${u.id}`} title={u.name}>
+                    <img className="app-icon" src={u.icon} alt={u.name} width={48} height={48} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="ctas reveal">
             <a className="btn primary" href={projectsHref}>{hero.allProjects[lang]}</a>
             <a className="btn ghost" href={ORG_URL}>{orgOnGitHub[lang]}</a>

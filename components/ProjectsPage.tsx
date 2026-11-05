@@ -4,7 +4,7 @@ import type { Lang } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import { EMAIL, NEWCOMER_ISSUES_URL } from "@/content/site";
 import { contribute } from "@/content/home";
-import { after, giveStar, groups, hero, meta, type Project } from "@/content/projects";
+import { after, giveStar, groups, hero, meta, upcoming, type Project } from "@/content/projects";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { StarCount } from "./StarCount";
@@ -85,6 +85,31 @@ export function ProjectsPage({ lang }: { lang: Lang }) {
             </div>
           </section>
         ))}
+
+        {/* Курсы в обсуждении: компактные плитки, ссылка — на Discussions репо. */}
+        <section className="group">
+          <h2 className="group-title">{upcoming.title[lang]}</h2>
+          <p className="group-lead">{upcoming.lead[lang]}</p>
+          <ul className="upcoming">
+            {upcoming.items.map((u, i) => {
+              const delay = DELAYS[i % DELAYS.length];
+              return (
+                <li
+                  key={u.id}
+                  id={u.id}
+                  className="upcoming-item reveal"
+                  style={delay ? ({ "--d": delay } as CSSProperties) : undefined}
+                >
+                  <img className="app-icon" src={u.icon} alt="" width={56} height={56} />
+                  <div>
+                    <h3>{u.name}</h3>
+                    <a href={`https://github.com/Shapak-Apps/${u.repo}/discussions`}>Discussions →</a>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
 
         <div className="after reveal">
           <p>{after.text[lang]}</p>
