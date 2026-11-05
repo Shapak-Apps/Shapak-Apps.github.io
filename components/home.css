@@ -62,10 +62,13 @@ html:has(.home){scroll-padding-top:0}
 .principle p{margin:10px 0 0; color:var(--soft); font-size:16px; max-width:46ch}
 
 /* ---------- проекты: ряд иконок, каждая ведёт к карточке на /projects/ ---------- */
+/* flex, а не grid на N колонок: ряд не зависит от числа проектов.
+   Широкий экран — все в одну строку; узкий — по 3, неполная строка по центру. */
 .app-row{
   list-style:none; margin:44px 0 0; padding:0;
-  display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:20px;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:20px;
 }
+.app-row li{flex:1 1 0; min-width:0}
 .app-row a{
   display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center;
   text-decoration:none; padding:8px 4px; border-radius:16px;
@@ -145,7 +148,8 @@ html:has(.home){scroll-padding-top:0}
   .band{grid-template-columns:1fr}
 }
 @media (max-width:860px){
-  .app-row{grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px 8px}
+  .app-row{gap:18px 8px}
+  .app-row li{flex:0 0 calc((100% - 16px) / 3)}
 }
 @media (max-width:640px){
   .home .masthead{left:16px; right:16px}
@@ -154,6 +158,7 @@ html:has(.home){scroll-padding-top:0}
   .hero .lead{font-size:16.5px; margin-top:20px}
   .scroll-cue{bottom:20px}
   .app-row{gap:14px 6px; margin-top:32px}
+  .app-row li{flex-basis:calc((100% - 12px) / 3)}
   .app-row .app-icon{width:72px; height:72px}
   .app-row b{font-size:14px}
   #projects .ctas{flex-direction:column; margin-top:30px}

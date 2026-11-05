@@ -20,13 +20,14 @@ export type Project = {
 };
 
 const IN_DEVELOPMENT: L = { tk: "Taýýarlanýar", ru: "В разработке", en: "In development" };
+const IN_THE_STORES: L = { tk: "Dükanlarda", ru: "В магазинах", en: "In the stores" };
 
 export const meta = {
   title: { tk: "Taslamalar — Şapak Apps", ru: "Проекты — Şapak Apps", en: "Projects — Şapak Apps" },
   description: {
-    tk: "Şapak Apps-yň açyk taslamalary: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, BluePlayer, Küşt. Kod GitHub-da, MIT, Apache-2.0 we GPL-3.0.",
-    ru: "Открытые проекты Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, BluePlayer, Küşt. Код на GitHub, MIT, Apache-2.0 и GPL-3.0.",
-    en: "Open-source projects by Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, BluePlayer, Küşt. Apps in Turkmen, code on GitHub. MIT, Apache-2.0 and GPL-3.0.",
+    tk: "Şapak Apps-yň açyk taslamalary: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Kod GitHub-da, MIT, Apache-2.0 we GPL-3.0.",
+    ru: "Открытые проекты Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Код на GitHub, MIT, Apache-2.0 и GPL-3.0.",
+    en: "Open-source projects by Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Apps in Turkmen, code on GitHub. MIT, Apache-2.0 and GPL-3.0.",
   },
   ogTitle: {
     tk: "Taslamalar — Open Source Turkmenistan",
@@ -39,9 +40,9 @@ export const hero = {
   eyebrow: "Open Source Turkmenistan",
   title: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
   lead: {
-    tk: "Alty açyk taslama, iki ugur. Ikisi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory, ygtyýarnamasy we açyk meseleleri bar.",
-    ru: "Шесть открытых проектов в двух направлениях. Два — в магазинах, все — на GitHub. У каждого свой автор, лицензия и открытые задачи.",
-    en: "Six open projects in two lines. Two are in the stores, all are on GitHub. Each has its own author, license and open issues.",
+    tk: "Bäş açyk taslama, iki ugur. Ikisi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory we ygtyýarnamasy bar.",
+    ru: "Пять открытых проектов в двух направлениях. Два — в магазинах, все — на GitHub. У каждого свой автор и лицензия.",
+    en: "Five open projects in two lines. Two are in the stores, all are on GitHub. Each has its own author and license.",
   },
 };
 
@@ -56,20 +57,23 @@ export const groups: { title: L; projects: Project[] }[] = [
         name: "Ykjam Terjime",
         icon: "/assets/ykjam-terjime.png",
         repo: "turkmen-phrasebook",
-        status: { live: true, text: { tk: "Dükanlarda", ru: "В магазинах", en: "In the stores" } },
+        status: { live: true, text: IN_THE_STORES },
+        // По README 2.0.0. Сайт Shapak-Apps/ykjam-terjime пока внутренний (noindex) — ссылку не ставим.
         text: {
-          tk: "Türkmen gepleşik kitaby we terjimeçi. Hakyky ýagdaýlar üçin taýýar sözlemler, türkmen harplary klawiaturasyz. Web wersiýasy brauzerde açylýar.",
-          ru: "Туркменский разговорник и переводчик. Готовые фразы для реальных ситуаций, туркменские буквы без специальной клавиатуры. Веб-версия открывается в браузере.",
-          en: "Turkmen phrasebook and translator. Ready phrases for real situations, Turkmen letters without a special keyboard. The web version opens in the browser.",
+          tk: "Türkmen gepleşik kitaby: hakyky ýagdaýlar üçin dialoglar we «ekrany görkez» režimi. Türkmen dili hytaý, iňlis ýa-da rus dilleri bilen jübütde.",
+          ru: "Туркменский разговорник: диалоги для реальных ситуаций и режим «покажи экран». Туркменский в паре с китайским, английским или русским.",
+          en: "Turkmen phrasebook: dialogues for real situations and a “show the screen” mode. Turkmen is paired with Chinese, English or Russian.",
         },
-        nums: [{ tk: "31 dil", ru: "31 язык", en: "31 languages" }, { tk: "internetsiz", ru: "офлайн", en: "offline" }, "MIT"],
+        nums: [
+          { tk: "3 dil jübüti", ru: "3 языковые пары", en: "3 language pairs" },
+          { tk: "internetsiz", ru: "офлайн", en: "offline" },
+          "MIT",
+        ],
         stack: "React Native · Expo · TypeScript",
         author: "TheSeydiCharyyev",
         links: [
           { label: "App Store", href: "https://apps.apple.com/app/ykjam-terjime/id6758071845" },
           { label: "Google Play", href: "https://play.google.com/store/apps/details?id=com.shapak.translator" },
-          // Отдельный репозиторий Shapak-Apps/ykjam-terjime со своим Pages.
-          { label: "Web", href: "https://shapak-apps.github.io/ykjam-terjime/" },
         ],
       },
       {
@@ -77,20 +81,20 @@ export const groups: { title: L; projects: Project[] }[] = [
         name: "Hytaý dili 1",
         icon: "/assets/hytay-dili-1.png",
         repo: "turkmen-chinese",
-        status: {
-          live: true,
-          text: { tk: "App Store-da · Google Play ýakynda", ru: "В App Store · скоро в Google Play", en: "On the App Store · Google Play soon" },
-          short: { tk: "App Store-da", ru: "В App Store", en: "On the App Store" },
-        },
+        status: { live: true, text: IN_THE_STORES },
+        // Про офлайн — как в самом приложении (about-app.tsx): аудио произношения стримится из сети.
         text: {
-          tk: "Türkmen dilinden hytaý dili. Her bapda teoriýa, gönükmeler we synag; indiki bap synagdan soň açylýar. Doly oflaýn.",
-          ru: "Китайский с туркменского. В каждой главе теория, упражнения и экзамен; следующая глава открывается после экзамена. Полностью офлайн.",
-          en: "Chinese from Turkmen. Every chapter has theory, exercises and an exam; the next chapter opens after the exam. Fully offline.",
+          tk: "Türkmen dilinden hytaý dili. Her bapda teoriýa, gönükmeler we synag; indiki bap synagdan soň açylýar. Esasan oflaýn: internet diňe aýdylyş seslerini diňlemek üçin gerek bolup biler.",
+          ru: "Китайский с туркменского. В каждой главе теория, упражнения и экзамен; следующая глава открывается после экзамена. В основном офлайн: интернет может понадобиться только для звука произношения.",
+          en: "Chinese from Turkmen. Every chapter has theory, exercises and an exam; the next chapter opens after the exam. Mostly offline: internet may be needed only for pronunciation audio.",
         },
         nums: [{ tk: "31 bap", ru: "31 глава", en: "31 chapters" }, { tk: "600 gönükme", ru: "600 упражнений", en: "600 exercises" }, "MIT"],
         stack: "React Native · Expo · TypeScript",
         author: "TheSeydiCharyyev",
-        links: [{ label: "App Store", href: "https://apps.apple.com/app/id6801010061" }],
+        links: [
+          { label: "App Store", href: "https://apps.apple.com/app/id6801010061" },
+          { label: "Google Play", href: "https://play.google.com/store/apps/details?id=com.turkmenlearn.chinese" },
+        ],
       },
       {
         id: "inlis-dili-1",
@@ -99,9 +103,9 @@ export const groups: { title: L; projects: Project[] }[] = [
         repo: "turkmen-english",
         status: { live: false, text: IN_DEVELOPMENT },
         text: {
-          tk: "Türkmen dilinden iňlis dili, A1 derejesi. Hytaý dili 1 bilen bir hereketlendirijide: şol bir baplar, synaglar we ösüş.",
-          ru: "Английский с туркменского, уровень A1. Тот же движок, что у Hytaý dili 1: те же главы, экзамены и прогресс.",
-          en: "English from Turkmen, level A1. Same engine as Hytaý dili 1: the same chapters, exams and progress.",
+          tk: "Türkmen dilinden iňlis dili, A1 derejesi. Hytaý dili 1 ýaly gurluş: baplar, synaglar we ösüş.",
+          ru: "Английский с туркменского, уровень A1. Устроен как Hytaý dili 1: главы, экзамены и прогресс.",
+          en: "English from Turkmen, level A1. Built like Hytaý dili 1: chapters, exams and progress.",
         },
         nums: ["A1", { tk: "20 bap", ru: "20 глав", en: "20 chapters" }, "MIT"],
         stack: "React Native · Expo · TypeScript",
@@ -125,21 +129,6 @@ export const groups: { title: L; projects: Project[] }[] = [
         },
         nums: [{ tk: "50+ dil", ru: "50+ языков", en: "50+ languages" }, "Apache-2.0"],
         stack: "Flutter · Dart",
-        author: "aynazar-sylyyew-dev",
-      },
-      {
-        id: "blueplayer",
-        name: "BluePlayer",
-        icon: "/assets/blueplayer.png",
-        repo: "BluePlayer",
-        status: { live: false, text: IN_DEVELOPMENT },
-        text: {
-          tk: "Android üçin döwrebap aýdym pleýeri. Kotlin we natiw C++.",
-          ru: "Современный музыкальный плеер для Android. Kotlin и нативный C++.",
-          en: "Modern music player for Android. Kotlin and native C++.",
-        },
-        nums: ["Kotlin", "C++", "Apache-2.0"],
-        stack: "Android",
         author: "aynazar-sylyyew-dev",
       },
       {
