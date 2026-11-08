@@ -4,7 +4,7 @@ import { SITE_URL, localePath, type Lang } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import { EMAIL, NEWCOMER_ISSUES_URL, ORG_URL, orgOnGitHub } from "@/content/site";
 import { members } from "@/content/people";
-import { allProjects, upcoming } from "@/content/projects";
+import { allProjects, upcoming, type Project } from "@/content/projects";
 import { contribute, hero, meta, mission, people, principles, projects } from "@/content/home";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -35,6 +35,19 @@ const orgJsonLd = {
 
 /** Каскад появления внутри ряда. */
 const delay = (i: number, perRow: number) => ({ "--d": `${(i % perRow) * 0.08}s` }) as CSSProperties;
+
+/** Иконка проекта в ряду на главной: значок, имя, статус; ведёт к карточке на /projects/. */
+function AppTile({ project: p, href, lang, style }: { project: Project; href: string; lang: Lang; style: CSSProperties }) {
+  return (
+    <li className="reveal" style={style}>
+      <a href={href}>
+        <img className="app-icon" src={p.icon} alt="" width={88} height={88} />
+        <b>{p.name}</b>
+        <span className={p.status.live ? "st live" : "st"}>{(p.status.short ?? p.status.text)[lang]}</span>
+      </a>
+    </li>
+  );
+}
 
 export function HomePage({ lang }: { lang: Lang }) {
   const projectsHref = localePath(lang, "/projects/");
@@ -80,30 +93,16 @@ export function HomePage({ lang }: { lang: Lang }) {
           <p className="section-lead reveal">{projects.lead[lang]}</p>
           <ul className="app-row">
             {allProjects.map((p, i) => (
-              <li key={p.id} className="reveal" style={delay(i, 6)}>
-                <a href={`${projectsHref}#${p.id}`}>
-                  <img className="app-icon" src={p.icon} alt="" width={88} height={88} />
-                  <b>{p.name}</b>
-                  <span className={p.status.live ? "st live" : "st"}>{(p.status.short ?? p.status.text)[lang]}</span>
-                </a>
-              </li>
+              <AppTile key={p.id} project={p} href={`${projectsHref}#${p.id}`} lang={lang} style={delay(i, 6)} />
             ))}
           </ul>
-          {/* Следующие языки: мелкий ряд без подписей — имя в alt и title, клик ведёт к плитке на /projects/. */}
-          <div className="next-langs reveal">
-            <p className="next-label">
-              {upcoming.title[lang]} · <span>{upcoming.status[lang]}</span>
-            </p>
-            <ul className="lang-row">
-              {upcoming.items.map((u) => (
-                <li key={u.id}>
-                  <a href={`${projectsHref}#${u.id}`} title={u.name}>
-                    <img className="app-icon" src={u.icon} alt={u.name} width={48} height={48} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Следующие языки — такие же иконки, отдельной строкой под подписью. */}
+          <p className="next-label reveal">{upcoming.title[lang]}</p>
+          <ul className="app-row next">
+            {upcoming.items.map((p, i) => (
+              <AppTile key={p.id} project={p} href={`${projectsHref}#${p.id}`} lang={lang} style={delay(i, 7)} />
+            ))}
+          </ul>
           <div className="ctas reveal">
             <a className="btn primary" href={projectsHref}>{hero.allProjects[lang]}</a>
             <a className="btn ghost" href={ORG_URL}>{orgOnGitHub[lang]}</a>
