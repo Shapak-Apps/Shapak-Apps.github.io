@@ -161,34 +161,48 @@ export const after = {
 /** Все проекты подряд — для ряда иконок на главной. */
 export const allProjects: Project[] = groups.flatMap((g) => g.projects);
 
-/** Курс в обсуждении: репо-витрина с Discussions, кода ещё нет. */
-export type Upcoming = {
-  /** Якорь плитки на /projects/ — на него ведут маленькие иконки с главной. */
-  id: string;
-  /** Имя как в сторе: «<Язык> dili 1». */
-  name: string;
-  /** Иконка из public/assets/ — уменьшенный логотип из HQ/brand, не перерисован. */
-  icon: string;
-  /** Репозиторий в Shapak-Apps; ссылка ведёт на его Discussions. */
-  repo: string;
-};
+const UNDER_DISCUSSION: L = { tk: "Maslahatlaşylýar", ru: "Обсуждается", en: "Under discussion" };
 
-/** Следующие языки — в порядке очереди (решение 10.08.2026). */
+/**
+ * Курс в обсуждении: репо-витрина с Discussions, кода ещё нет. Карточка того же вида, что у проектов.
+ * Текст — по README курсов. «Полностью офлайн» из README не переносим (см. Hytaý dili 1).
+ * Иконка — уменьшенный логотип из HQ/brand, не перерисован.
+ */
+function course(slug: string, repo: string, name: string, language: L): Project {
+  return {
+    id: `${slug}-dili-1`,
+    name,
+    icon: `/assets/${slug}-dili-1.png`,
+    repo,
+    status: { live: false, text: UNDER_DISCUSSION },
+    text: {
+      tk: `Türkmen dilinden ${language.tk}. Hytaý dili 1 bilen şol bir binýat: baplar, synaglar we ösüş. Häzir pikirler ýygnalýar: haýsy okuw kitaby esas bolmaly, haýsy temalar gerek.`,
+      ru: `${language.ru} с туркменского. Та же основа, что у Hytaý dili 1: главы, экзамены и прогресс. Сейчас собираем идеи: на каком учебнике строить курс и какие темы нужны.`,
+      en: `${language.en} from Turkmen. Same base as Hytaý dili 1: chapters, exams and progress. We are collecting ideas now: which textbook to use and which topics are needed.`,
+    },
+    nums: ["MIT"],
+    stack: "React Native · Expo · TypeScript",
+    author: "TheSeydiCharyyev",
+    links: [{ label: "Discussions", href: `https://github.com/Shapak-Apps/${repo}/discussions` }],
+  };
+}
+
+/** Следующие языки — в порядке очереди (решение 10.08.2026). На главной — мелким рядом, на /projects/ — карточками. */
 export const upcoming = {
   title: { tk: "Indiki diller", ru: "Следующие языки", en: "Next languages" },
-  status: { tk: "Maslahatlaşylýar", ru: "Обсуждается", en: "Under discussion" },
+  status: UNDER_DISCUSSION,
   lead: {
     tk: "Maslahatlaşylýar — pikiriňi Discussions-da ýaz.",
     ru: "Обсуждается — напишите свои идеи в Discussions.",
     en: "Under discussion — share your ideas in Discussions.",
   },
   items: [
-    { id: "rus-dili-1", name: "Rus dili 1", icon: "/assets/rus-dili-1.png", repo: "turkmen-russian" },
-    { id: "nemes-dili-1", name: "Nemes dili 1", icon: "/assets/nemes-dili-1.png", repo: "turkmen-german" },
-    { id: "fransuz-dili-1", name: "Fransuz dili 1", icon: "/assets/fransuz-dili-1.png", repo: "turkmen-french" },
-    { id: "yapon-dili-1", name: "Ýapon dili 1", icon: "/assets/yapon-dili-1.png", repo: "turkmen-japanese" },
-    { id: "korey-dili-1", name: "Koreý dili 1", icon: "/assets/korey-dili-1.png", repo: "turkmen-korean" },
-    { id: "arap-dili-1", name: "Arap dili 1", icon: "/assets/arap-dili-1.png", repo: "turkmen-arabic" },
-    { id: "pars-dili-1", name: "Pars dili 1", icon: "/assets/pars-dili-1.png", repo: "turkmen-persian" },
-  ] satisfies Upcoming[],
+    course("rus", "turkmen-russian", "Rus dili 1", { tk: "rus dili", ru: "Русский", en: "Russian" }),
+    course("nemes", "turkmen-german", "Nemes dili 1", { tk: "nemes dili", ru: "Немецкий", en: "German" }),
+    course("fransuz", "turkmen-french", "Fransuz dili 1", { tk: "fransuz dili", ru: "Французский", en: "French" }),
+    course("yapon", "turkmen-japanese", "Ýapon dili 1", { tk: "ýapon dili", ru: "Японский", en: "Japanese" }),
+    course("korey", "turkmen-korean", "Koreý dili 1", { tk: "koreý dili", ru: "Корейский", en: "Korean" }),
+    course("arap", "turkmen-arabic", "Arap dili 1", { tk: "arap dili", ru: "Арабский", en: "Arabic" }),
+    course("pars", "turkmen-persian", "Pars dili 1", { tk: "pars dili", ru: "Персидский", en: "Persian" }),
+  ],
 };

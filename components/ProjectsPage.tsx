@@ -86,29 +86,15 @@ export function ProjectsPage({ lang }: { lang: Lang }) {
           </section>
         ))}
 
-        {/* Курсы в обсуждении: компактные плитки, ссылка — на Discussions репо. */}
+        {/* Курсы в обсуждении: такие же карточки, первая кнопка — Discussions репо. */}
         <section className="group">
           <h2 className="group-title">{upcoming.title[lang]}</h2>
           <p className="group-lead">{upcoming.lead[lang]}</p>
-          <ul className="upcoming">
-            {upcoming.items.map((u, i) => {
-              const delay = DELAYS[i % DELAYS.length];
-              return (
-                <li
-                  key={u.id}
-                  id={u.id}
-                  className="upcoming-item reveal"
-                  style={delay ? ({ "--d": delay } as CSSProperties) : undefined}
-                >
-                  <img className="app-icon" src={u.icon} alt="" width={56} height={56} />
-                  <div>
-                    <h3>{u.name}</h3>
-                    <a href={`https://github.com/Shapak-Apps/${u.repo}/discussions`}>Discussions →</a>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="projects">
+            {upcoming.items.map((p, i) => (
+              <ProjectCard key={p.repo} project={p} lang={lang} index={i} />
+            ))}
+          </div>
         </section>
 
         <div className="after reveal">
