@@ -55,10 +55,12 @@ export const principles = {
     },
     {
       title: { tk: "Mahabatsyz we tölegsiz", ru: "Без рекламы и платежей", en: "No ads, no fees" },
+      // Не «никаких данных»: Köpri (в RuStore) шлёт отчёты о сбоях в Firebase Crashlytics — так и в его политике.
+      // Онлайн-перевод Köpri — в принципе 04.
       text: {
-        tk: "Dükandaky programmalar mugt, mahabatsyz we hiç hili maglumat ýygnamaýar.",
-        ru: "Приложения в магазинах бесплатны, без рекламы и не собирают никаких данных.",
-        en: "The apps in the stores are free, have no ads and collect no data at all.",
+        tk: "Dükandaky programmalar mugt we mahabatsyz. Şahsy maglumat ýygnamaýar; Köpri diňe näsazlyk hasabatlaryny iberýär.",
+        ru: "Приложения в магазинах бесплатны и без рекламы. Личные данные не собирают; Köpri отправляет только отчёты о сбоях.",
+        en: "The apps in the stores are free and have no ads. They collect no personal data; Köpri only sends crash reports.",
       },
     },
     {

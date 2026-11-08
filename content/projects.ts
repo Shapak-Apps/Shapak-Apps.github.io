@@ -40,9 +40,9 @@ export const hero = {
   eyebrow: "Open Source Turkmenistan",
   title: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
   lead: {
-    tk: "Bäş açyk taslama, iki ugur. Ikisi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory we ygtyýarnamasy bar.",
-    ru: "Пять открытых проектов в двух направлениях. Два — в магазинах, все — на GitHub. У каждого свой автор и лицензия.",
-    en: "Five open projects in two lines. Two are in the stores, all are on GitHub. Each has its own author and license.",
+    tk: "Bäş açyk taslama, iki ugur. Üçüsi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory we ygtyýarnamasy bar.",
+    ru: "Пять открытых проектов в двух направлениях. Три — в магазинах, все — на GitHub. У каждого свой автор и лицензия.",
+    en: "Five open projects in two lines. Three are in the stores, all are on GitHub. Each has its own author and license.",
   },
 };
 
@@ -121,7 +121,8 @@ export const groups: { title: L; projects: Project[] }[] = [
         name: "Köpri",
         icon: "/assets/kopri.png",
         repo: "K-pri-App-for-phone",
-        status: { live: false, text: IN_DEVELOPMENT },
+        // В RuStore (на 08.11.2026 — 1.0.2, com.kopri.translator); в Google Play нет.
+        status: { live: true, text: { tk: "RuStore-da", ru: "В RuStore", en: "On RuStore" } },
         text: {
           tk: "Android üçin oflaýn terjimeçi: rus we iňlis dillerinden türkmen diline oflaýn sözlük, beýleki jübütler üçin onlaýn hyzmatlar, uly köpdilli gepleşik kitaby. Kamera arkaly terjime taýýarlanýar.",
           ru: "Офлайн-переводчик для Android: офлайн-словарь с русского и английского на туркменский, онлайн-сервисы для остальных пар, большой многоязычный разговорник. Готовится перевод через камеру.",
@@ -130,6 +131,7 @@ export const groups: { title: L; projects: Project[] }[] = [
         nums: [{ tk: "50+ dil", ru: "50+ языков", en: "50+ languages" }, "Apache-2.0"],
         stack: "Flutter · Dart",
         author: "aynazar-sylyyew-dev",
+        links: [{ label: "RuStore", href: "https://www.rustore.ru/catalog/app/com.kopri.translator" }],
       },
       {
         id: "kust",
