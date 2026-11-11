@@ -25,9 +25,9 @@ const IN_THE_STORES: L = { tk: "Dükanlarda", ru: "В магазинах", en: "
 export const meta = {
   title: { tk: "Taslamalar — Şapak Apps", ru: "Проекты — Şapak Apps", en: "Projects — Şapak Apps" },
   description: {
-    tk: "Şapak Apps-yň açyk taslamalary: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Kod GitHub-da, MIT, Apache-2.0 we GPL-3.0.",
-    ru: "Открытые проекты Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Код на GitHub, MIT, Apache-2.0 и GPL-3.0.",
-    en: "Open-source projects by Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt. Apps in Turkmen, code on GitHub. MIT, Apache-2.0 and GPL-3.0.",
+    tk: "Şapak Apps jemgyýetiniň açyk taslamalary: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt we ýedi täze dil kursy. Kod GitHub-da, MIT, Apache-2.0 we GPL-3.0.",
+    ru: "Открытые проекты сообщества Şapak Apps: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt и семь новых языковых курсов. Код на GitHub, MIT, Apache-2.0 и GPL-3.0.",
+    en: "Open projects of the Şapak Apps community: Ykjam Terjime, Hytaý dili 1, Iňlis dili 1, Köpri, Küşt and seven new language courses. Code on GitHub, MIT, Apache-2.0 and GPL-3.0.",
   },
   ogTitle: {
     tk: "Taslamalar — Open Source Turkmenistan",
@@ -40,9 +40,9 @@ export const hero = {
   eyebrow: "Open Source Turkmenistan",
   title: { tk: "Taslamalar", ru: "Проекты", en: "Projects" },
   lead: {
-    tk: "Bäş açyk taslama, iki ugur. Üçüsi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory we ygtyýarnamasy bar.",
-    ru: "Пять открытых проектов в двух направлениях. Три — в магазинах, все — на GitHub. У каждого свой автор и лицензия.",
-    en: "Five open projects in two lines. Three are in the stores, all are on GitHub. Each has its own author and license.",
+    tk: "Bäş taslama we ýedi täze dil kursy. Üçüsi dükanlarda, hemmesi GitHub-da. Her biriniň öz awtory we ygtyýarnamasy bar.",
+    ru: "Пять проектов и семь новых языковых курсов. Три — в магазинах, все — на GitHub. У каждого свой автор и лицензия.",
+    en: "Five projects and seven new language courses. Three are in the stores, all are on GitHub. Each has its own author and license.",
   },
 };
 
