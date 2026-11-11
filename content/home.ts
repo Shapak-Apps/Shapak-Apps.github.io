@@ -7,20 +7,20 @@ export const meta = {
     en: "Şapak Apps — Open Source Turkmenistan",
   },
   description: {
-    tk: "Türkmenistanda döredilýän açyk kodly programma üpjünçiligi: türkmen dilinde programmalar, kod GitHub-da, MIT, Apache-2.0 we GPL-3.0.",
-    ru: "Открытое ПО, созданное в Туркменистане: приложения на туркменском, код на GitHub, лицензии MIT, Apache-2.0 и GPL-3.0.",
-    en: "Open-source software built in Turkmenistan: apps in Turkmen, code on GitHub, MIT, Apache-2.0 and GPL-3.0 licensed.",
+    tk: "Türkmenistanyň açyk kod jemgyýeti: bilelikde mugt programmalar döredýäris, täze gelenler ilkinji Pull Request-ini şu ýerde açýarlar.",
+    ru: "Сообщество open source в Туркменистане: вместе делаем бесплатные приложения, новички открывают здесь свой первый pull request.",
+    en: "The open-source community of Turkmenistan: we build free apps together, and newcomers open their first pull request here.",
   },
   ogTitle: "Open Source Turkmenistan",
 } satisfies Record<string, L | string>;
 
-/** Первый экран — как баннер организации: знак, имя, одна строка, ряд приложений. */
+/** Первый экран — как баннер организации; с 11.11 строка — про сообщество (Open Source Turkmenistan Community). */
 export const hero = {
   title: "Open Source Turkmenistan",
   lead: {
-    tk: "Türkmen dilinde mugt programmalar: dil kurslary, terjimeçiler we gurallar.",
-    ru: "Бесплатные программы на туркменском: языковые курсы, переводчики и инструменты.",
-    en: "Free software in Turkmen: language courses, translators and tools.",
+    tk: "Türkmenistanyň açyk kod jemgyýeti. Bilelikde mugt programmalar döredýäris we täze gelenlere ilkinji Pull Request-ini açmaga kömek edýäris.",
+    ru: "Сообщество open source в Туркменистане. Вместе делаем бесплатные программы и помогаем новичкам открыть первый pull request.",
+    en: "The open-source community of Turkmenistan. We build free software together and help newcomers open their first pull request.",
   },
   allProjects: { tk: "Ähli taslamalar →", ru: "Все проекты →", en: "All projects →" },
   /** Подпись стрелки «листай» внизу первого экрана (для экранных дикторов). */
@@ -31,14 +31,14 @@ export const hero = {
 export const mission = {
   label: { tk: "Maksadymyz", ru: "Цели", en: "Mission" },
   strong: {
-    tk: "Türkmen dilinde programma üpjünçiligi az.",
-    ru: "Программ на туркменском почти нет.",
-    en: "There is very little software in Turkmen.",
+    tk: "Türkmenistanda açyk kod az, ony öwrenmek üçin ýer hem az.",
+    ru: "В Туркменистане мало open source — и мало мест, где ему можно научиться.",
+    en: "There is little open source in Turkmenistan — and few places to learn it.",
   },
   rest: {
-    tk: "Biz şol boşlugy doldurýarys — okuw taslamalary bilen däl-de, hakykatdan hem goýberilýän programmalar bilen.",
-    ru: "Мы заполняем этот пробел — не учебными проектами, а приложениями, которые действительно выходят.",
-    en: "We fill that gap — not with tutorial projects, but with apps that really ship.",
+    tk: "Biz muny üýtgedýäris: hakyky programmalary bilelikde döredýäris, täze gelenler bolsa ilkinji goşantlaryny şu ýerde goşýarlar.",
+    ru: "Мы это меняем: вместе делаем настоящие приложения, а новички вносят сюда свой первый вклад.",
+    en: "We are changing that: we build real apps together, and newcomers make their first contribution here.",
   },
 };
 
@@ -54,30 +54,30 @@ export const principles = {
       },
     },
     {
-      title: { tk: "Mahabatsyz we tölegsiz", ru: "Без рекламы и платежей", en: "No ads, no fees" },
-      // Не «никаких данных»: Köpri (в RuStore) шлёт отчёты о сбоях в Firebase Crashlytics — так и в его политике.
-      // Онлайн-перевод Köpri — в принципе 04.
+      title: { tk: "Täze gelenlere ýol", ru: "Путь для новичка", en: "A way in for newcomers" },
       text: {
-        tk: "Dükandaky programmalar mugt we mahabatsyz. Şahsy maglumat ýygnamaýar; Köpri diňe näsazlyk hasabatlaryny iberýär.",
-        ru: "Приложения в магазинах бесплатны и без рекламы. Личные данные не собирают; Köpri отправляет только отчёты о сбоях.",
-        en: "The apps in the stores are free and have no ads. They collect no personal data; Köpri only sends crash reports.",
+        tk: "Ilkinji Pull Request üçin kiçi meseleler bar. Kod barlagy türkmen we rus dillerinde geçirilýär.",
+        ru: "Есть небольшие задачи для первого pull request. Ревью кода — на туркменском и русском.",
+        en: "There are small issues for your first pull request. Code review is in Turkmen and Russian.",
       },
     },
     {
-      title: { tk: "Türkmen dilinde", ru: "На туркменском", en: "In Turkmen" },
+      title: { tk: "Hakyky programmalar", ru: "Настоящие приложения", en: "Real apps" },
+      // Туркменский интерфейс есть у всех пяти (сверено 11.11): Köpri tk/ru/en/tr, Küşt tk/ru/en, Ykjam — 5 языков, Hytaý и Iňlis — целиком.
       text: {
-        tk: "Interfeýs türkmen dilinde. Kod barlagy türkmen we rus dillerinde geçirilýär.",
-        ru: "Интерфейс на туркменском языке. Ревью кода — на туркменском и русском.",
-        en: "The interface is in Turkmen. Code review is in Turkmen and Russian.",
+        tk: "Gatnaşyjylaryň kody adamlaryň dükanlardan ýükleýän programmalaryna düşýär. Her programmada türkmen dilinde interfeýs bar.",
+        ru: "Код участников попадает в приложения, которые люди скачивают из магазинов. В каждом приложении есть туркменский интерфейс.",
+        en: "Contributors' code goes into apps that people download from the stores. Every app has a Turkmen interface.",
       },
     },
     {
-      // Не «все офлайн»: Köpri для части языковых пар ходит в онлайн-сервисы.
-      title: { tk: "Internetsiz hem", ru: "И без интернета", en: "Offline too" },
+      title: { tk: "Mugt we mahabatsyz", ru: "Бесплатно и без рекламы", en: "Free, no ads" },
+      // Не «никаких данных» и не «только отчёты о сбоях»: у Köpri (в RuStore) по его же политике уходят
+      // отчёты о сбоях (Firebase Crashlytics) и текст онлайн-перевода (Google Translate, Lingva, MyMemory).
       text: {
-        tk: "Programmalaryň köpüsi internetsiz işleýär. Köpri käbir dil jübütleri üçin onlaýn hyzmatlary ulanýar.",
-        ru: "Большинство приложений работают без интернета. Köpri для части языковых пар обращается к онлайн-сервисам.",
-        en: "Most apps work without internet. Köpri uses online services for some language pairs.",
+        tk: "Dükandaky programmalar mugt we mahabatsyz. Şahsy maglumat ýygnamaýar. Köpri näsazlyk hasabatlaryny iberýär, onlaýn terjime üçin tekst bolsa onlaýn hyzmatlara gidýär.",
+        ru: "Приложения в магазинах бесплатны и без рекламы. Личные данные не собирают. Köpri отправляет отчёты о сбоях, а текст для онлайн-перевода уходит в онлайн-сервисы.",
+        en: "The apps in the stores are free and have no ads. They collect no personal data. Köpri sends crash reports, and text for online translation goes to online services.",
       },
     },
   ] satisfies { title: L; text: L }[],
@@ -96,10 +96,11 @@ export const projects = {
 
 export const people = {
   title: { tk: "Adamlar", ru: "Люди", en: "People" },
+  // «Большинство — студенты с первым PR» — из README org (profile/README.md, текст юзера).
   lead: {
-    tk: "Şapak Apps — bir adamyň studiýasy däl. Taslamalar dürli awtorlardan gelýär.",
-    ru: "Şapak Apps — не студия одного человека. Проекты приходят от разных авторов.",
-    en: "Şapak Apps is not one person's studio. Projects come from different authors.",
+    tk: "Guramanyň agzalary. Gatnaşyjylaryň köpüsi — ilkinji Pull Request-ini açýan talyplar.",
+    ru: "Участники организации. Большинство контрибьюторов — студенты, которые открывают свой первый pull request.",
+    en: "Members of the organization. Most contributors are students opening their first pull request.",
   },
 };
 

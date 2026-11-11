@@ -228,6 +228,9 @@ html:has(.home){scroll-padding-top:0}
 /* Низкие экраны телефонов (360×640 и т. п.): полоса «первый PR» — ещё плотнее, чтобы влезть в экран. */
 @media (max-width:640px) and (max-height:700px){
   .screen{padding:20px 0}
+  /* принципы: четыре плитки с текстом в 3–4 строки (ru) — поля плотнее */
+  .principles{gap:6px; margin-top:14px}
+  .principle{padding:10px 14px}
   .band{padding:18px 16px; gap:12px}
   .band .section-title{font-size:23px}
   .band-head p{font-size:14px}
